@@ -13,8 +13,10 @@ public class SecurityFilterChainConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                   .authorizeHttpRequests(auth ->
-                        auth.anyRequest().authenticated())
+                .authorizeRequests()
+                .antMatchers("/", "index").permitAll()
+                .antMatchers("/api/**").authenticated()
+                .and()
                 .formLogin();
         return http.build();
     }
