@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.security;
+package com.xdavide9.turbobuy.user;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +8,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import static com.xdavide9.turbobuy.security.ApplicationRole.*;
+
+// These are the actual users that can log in, and they are saved in an im memory db
+// but when database auth is implemented they will be the ones that are saved in the postgres db
+
+// only anna can see the users api because she is an admin
+
 @Configuration
-public class UserConfig {
+public class UserConfigPostgres {
 
     private final PasswordEncoder encoder;
 
-    public UserConfig(PasswordEncoder encoder) {
+    public UserConfigPostgres(PasswordEncoder encoder) {
         this.encoder = encoder;
     }
 
@@ -22,17 +29,17 @@ public class UserConfig {
         UserDetails anna = User.builder()
                 .username("anna")
                 .password(encoder.encode("password"))
-                .roles("USER")
+                .authorities(ADMIN.getGrantedAuthorities())
                 .build();
         UserDetails muzio = User.builder()
                 .username("muzio")
                 .password(encoder.encode("password"))
-                .roles("USER")
+                .authorities(USER.getGrantedAuthorities())
                 .build();
         UserDetails reginaldo = User.builder()
                 .username("reginaldo")
                 .password(encoder.encode("password"))
-                .roles("USER")
+                .authorities(USER.getGrantedAuthorities())
                 .build();
         return new InMemoryUserDetailsManager(anna, muzio, reginaldo);
     }

@@ -1,7 +1,9 @@
 package com.xdavide9.turbobuy.user;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -18,29 +20,22 @@ public class User {
             allocationSize = 1
     )
     private Integer userId;
-    private String userName;
+    private String username;
     private String password;
-    private String roles = "USER";
-    private String authorities = "user:read,user:write";
+    @ElementCollection
+    private Set<SimpleGrantedAuthority> grantedAuthorities;
 
-    public User(Integer userId, String userName, String password, String roles, String authorities) {
+    public User(Integer userId, String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.userId = userId;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
-        this.roles = roles;
-        this.authorities = authorities;
+        this.grantedAuthorities = grantedAuthorities;
     }
 
-    public User(String userName, String password, String roles, String authorities) {
-        this.userName = userName;
+    public User(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
+        this.username = username;
         this.password = password;
-        this.roles = roles;
-        this.authorities = authorities;
-    }
-
-    public User(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
+        this.grantedAuthorities = grantedAuthorities;
     }
 
     public User() {}
@@ -49,10 +44,9 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", userName='" + userName + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", roles='" + roles + '\'' +
-                ", authorities='" + authorities + '\'' +
+                ", role='" + grantedAuthorities + '\'' +
                 '}';
     }
 
@@ -61,12 +55,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(userId, user.userId) && Objects.equals(userName, user.userName) && Objects.equals(password, user.password) && Objects.equals(roles, user.roles) && Objects.equals(authorities, user.authorities);
+        return userId.equals(user.userId) && username.equals(user.username) && password.equals(user.password) && grantedAuthorities.equals(user.grantedAuthorities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, userName, password, roles, authorities);
+        return Objects.hash(userId, username, password, grantedAuthorities);
     }
 
     public Integer getUserId() {
@@ -77,12 +71,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -93,19 +87,11 @@ public class User {
         this.password = password;
     }
 
-    public String getRoles() {
-        return roles;
+    public Set<SimpleGrantedAuthority> getGrantedAuthorities() {
+        return grantedAuthorities;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
-    public String getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(String authorities) {
-        this.authorities = authorities;
+    public void setRoles(Set<SimpleGrantedAuthority> grantedAuthorities) {
+        this.grantedAuthorities = grantedAuthorities;
     }
 }

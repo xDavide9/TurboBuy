@@ -8,13 +8,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.xdavide9.turbobuy.security.ApplicationRole.*;
+
+// These users currently can't be used to log in because database auth is not yet implemented
+// They are saved in the db by a command line runner but in the future they will come from a form
+
 @Configuration
-public class AddDefaultUsersConfiguration {
+public class UserConfigInMemory {
 
     private final UserRepository repository;
     private final PasswordEncoder encoder;
 
-    public AddDefaultUsersConfiguration(UserRepository repository, PasswordEncoder encoder) {
+    public UserConfigInMemory(UserRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
     }
@@ -23,9 +28,9 @@ public class AddDefaultUsersConfiguration {
     CommandLineRunner commandLineRunner() {
         return args -> {
             List<User> userList = Arrays.asList(
-              new User("anna", encoder.encode("password")),
-              new User("muzio", encoder.encode("password")),
-              new User("reginaldo", encoder.encode("password"))
+              new User("john", encoder.encode("password123"), ADMIN.getGrantedAuthorities()),
+              new User("janet", encoder.encode("password123"), USER.getGrantedAuthorities()),
+              new User("marcus", encoder.encode("password123"), USER.getGrantedAuthorities())
             );
             repository.saveAll(userList);
         };
