@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.security;
 
-public enum ApplicationPermission {
+public enum AppUserPermission {
     SALES_READ("sales:read"),
     SALES_WRITE("sales:write"),
     USER_READ("user:read"),
@@ -8,7 +8,7 @@ public enum ApplicationPermission {
 
     private final String permissionString;
 
-    ApplicationPermission(String permissionString) {
+    AppUserPermission(String permissionString) {
         this.permissionString = permissionString;
     }
 

@@ -9,21 +9,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/users")
-public class UserController {
+public class AppUserController {
 
-    private final UserRepository repository;
+    private final AppUserRepository repository;
 
-    public UserController(UserRepository repository) {
+    public AppUserController(AppUserRepository repository) {
         this.repository = repository;
     }
 
     @GetMapping
-    public List<User> getUsers() {
+    public List<AppUser> getUsers() {
         return repository.findAll();
     }
 
     @GetMapping(path = "{userId}")
-    public User getUser(@PathVariable("userId") Integer userId) {
+    public AppUser getUser(@PathVariable("userId") Integer userId) {
         return repository
                 .findById(userId)
                 .orElseThrow(() -> new IllegalStateException(

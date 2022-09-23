@@ -8,18 +8,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.xdavide9.turbobuy.security.ApplicationRole.*;
+import static com.xdavide9.turbobuy.security.AppUserRole.*;
 
 // These users currently can't be used to log in because database auth is not yet implemented
 // They are saved in the db by a command line runner but in the future they will come from a form
 
 @Configuration
-public class UserConfigInMemory {
+public class AppUserConfigInMemory {
 
-    private final UserRepository repository;
+    private final AppUserRepository repository;
     private final PasswordEncoder encoder;
 
-    public UserConfigInMemory(UserRepository repository, PasswordEncoder encoder) {
+    public AppUserConfigInMemory(AppUserRepository repository, PasswordEncoder encoder) {
         this.repository = repository;
         this.encoder = encoder;
     }
@@ -27,12 +27,12 @@ public class UserConfigInMemory {
     @Bean
     CommandLineRunner commandLineRunner() {
         return args -> {
-            List<User> userList = Arrays.asList(
-              new User("john", encoder.encode("password123"), ADMIN.getGrantedAuthorities()),
-              new User("janet", encoder.encode("password123"), USER.getGrantedAuthorities()),
-              new User("marcus", encoder.encode("password123"), USER.getGrantedAuthorities())
+            List<AppUser> appUserList = Arrays.asList(
+              new AppUser("john", encoder.encode("password123"), ADMIN.getGrantedAuthorities()),
+              new AppUser("janet", encoder.encode("password123"), USER.getGrantedAuthorities()),
+              new AppUser("marcus", encoder.encode("password123"), USER.getGrantedAuthorities())
             );
-            repository.saveAll(userList);
+            repository.saveAll(appUserList);
         };
     }
 }

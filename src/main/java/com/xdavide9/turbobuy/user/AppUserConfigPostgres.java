@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static com.xdavide9.turbobuy.security.ApplicationRole.*;
+import static com.xdavide9.turbobuy.security.AppUserRole.*;
 
 // These are the actual users that can log in, and they are saved in an im memory db
 // but when database auth is implemented they will be the ones that are saved in the postgres db
@@ -16,11 +16,11 @@ import static com.xdavide9.turbobuy.security.ApplicationRole.*;
 // only anna can see the users api because she is an admin
 
 @Configuration
-public class UserConfigPostgres {
+public class AppUserConfigPostgres {
 
     private final PasswordEncoder encoder;
 
-    public UserConfigPostgres(PasswordEncoder encoder) {
+    public AppUserConfigPostgres(PasswordEncoder encoder) {
         this.encoder = encoder;
     }
 

@@ -6,17 +6,17 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table
+public class AppUser {
 
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "user_generator"
+            generator = "app_user_generator"
     )
     @SequenceGenerator(
-            name = "user_generator",
-            sequenceName = "user_generator",
+            name = "app_user_generator",
+            sequenceName = "app_user_generator",
             allocationSize = 1
     )
     private Integer userId;
@@ -25,20 +25,20 @@ public class User {
     @ElementCollection
     private Set<SimpleGrantedAuthority> grantedAuthorities;
 
-    public User(Integer userId, String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
+    public AppUser(Integer userId, String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.grantedAuthorities = grantedAuthorities;
     }
 
-    public User(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
+    public AppUser(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
         this.password = password;
         this.grantedAuthorities = grantedAuthorities;
     }
 
-    public User() {}
+    public AppUser() {}
 
     @Override
     public String toString() {
@@ -54,8 +54,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return userId.equals(user.userId) && username.equals(user.username) && password.equals(user.password) && grantedAuthorities.equals(user.grantedAuthorities);
+        AppUser appUser = (AppUser) o;
+        return userId.equals(appUser.userId) && username.equals(appUser.username) && password.equals(appUser.password) && grantedAuthorities.equals(appUser.grantedAuthorities);
     }
 
     @Override
