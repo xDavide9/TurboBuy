@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,17 +10,12 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import static com.xdavide9.turbobuy.security.AppUserRole.*;
 
-// These are the actual users that can log in, and they are saved in an im memory db
-// but when database auth is implemented they will be the ones that are saved in the postgres db
-
-// only anna can see the users api because she is an admin
-
 @Configuration
-public class AppUserConfigPostgres {
+public class InMemoryUserConfig {
 
     private final PasswordEncoder encoder;
 
-    public AppUserConfigPostgres(PasswordEncoder encoder) {
+    public InMemoryUserConfig(PasswordEncoder encoder) {
         this.encoder = encoder;
     }
 

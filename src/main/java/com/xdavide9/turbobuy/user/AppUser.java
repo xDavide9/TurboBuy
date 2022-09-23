@@ -1,12 +1,19 @@
 package com.xdavide9.turbobuy.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import javax.persistence.*;
-import java.util.Objects;
 import java.util.Set;
+
+import static com.xdavide9.turbobuy.security.AppUserRole.USER;
 
 @Entity
 @Table
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AppUser {
 
     @Id
@@ -23,14 +30,11 @@ public class AppUser {
     private String username;
     private String password;
     @ElementCollection
-    private Set<SimpleGrantedAuthority> grantedAuthorities;
-
-    public AppUser(Integer userId, String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.grantedAuthorities = grantedAuthorities;
-    }
+    private Set<SimpleGrantedAuthority> grantedAuthorities = USER.getGrantedAuthorities();
+    private boolean isAccountNonExpired = true;
+    private boolean isAccountNonLocked = true;
+    private boolean isCredentialsNonExpired = true;
+    private boolean isEnabled = true;
 
     public AppUser(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
@@ -38,60 +42,8 @@ public class AppUser {
         this.grantedAuthorities = grantedAuthorities;
     }
 
-    public AppUser() {}
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + grantedAuthorities + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AppUser appUser = (AppUser) o;
-        return userId.equals(appUser.userId) && username.equals(appUser.username) && password.equals(appUser.password) && grantedAuthorities.equals(appUser.grantedAuthorities);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, username, password, grantedAuthorities);
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
+    public AppUser(String username, String password) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Set<SimpleGrantedAuthority> getGrantedAuthorities() {
-        return grantedAuthorities;
-    }
-
-    public void setRoles(Set<SimpleGrantedAuthority> grantedAuthorities) {
-        this.grantedAuthorities = grantedAuthorities;
     }
 }
