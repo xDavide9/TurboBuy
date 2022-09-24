@@ -7,12 +7,6 @@ import java.util.stream.Collectors;
 
 import static com.xdavide9.turbobuy.security.AppUserPermission.*;
 
-// only an admin shall see and modify details about other users
-// a simple user will just read and post sales
-
-// a set of permissions is attached to each role defining what it allows to do
-// the grantedAuthorities are the combination of these permissions and the role itself
-
 public enum AppUserRole {
     USER(Set.of(SALES_READ, SALES_WRITE)),
     ADMIN(Set.of(SALES_READ, SALES_WRITE, USER_READ, USER_WRITE));
