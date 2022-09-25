@@ -27,9 +27,10 @@ public class AppUser {
             allocationSize = 1
     )
     private Integer userId;
+    @Column(unique = true)
     private String username;
     private String password;
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Set<SimpleGrantedAuthority> grantedAuthorities = USER.getGrantedAuthorities();
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;

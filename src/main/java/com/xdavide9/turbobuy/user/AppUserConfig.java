@@ -25,7 +25,8 @@ public class AppUserConfig {
         return args -> {
             List<AppUser> appUsers = List.of(
                     new AppUser("anna", encoder.encode("password"), ADMIN.getGrantedAuthorities()),
-                    new AppUser("marcus", encoder.encode("password"))
+                    new AppUser("marcus", encoder.encode("password")),
+                    new AppUser("andrew", encoder.encode("password"), ADMIN.getGrantedAuthorities())
             );
             repository.saveAll(appUsers);
         };
