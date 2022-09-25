@@ -20,7 +20,7 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@Param("username") String username) {
         AppUser appUser = repository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("user " + username + " not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User " + username + " NOT found"));
         return new AppUserDetails(appUser);
     }
 }
