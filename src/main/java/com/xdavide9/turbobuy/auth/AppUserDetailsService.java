@@ -18,9 +18,9 @@ public class AppUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(@Param("username") String username) throws UsernameNotFoundException {
-        AppUser appUser = repository.findByUsername(username);
-        AppUserDetails appUserDetails = new AppUserDetails(appUser);
-        return appUserDetails;
+    public UserDetails loadUserByUsername(@Param("username") String username) {
+        AppUser appUser = repository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("user " + username + " not found"));
+        return new AppUserDetails(appUser);
     }
 }
