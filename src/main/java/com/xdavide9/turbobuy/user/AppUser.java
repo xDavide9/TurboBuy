@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import javax.persistence.*;
 import java.util.Set;
 
-import static com.xdavide9.turbobuy.security.AppUserRole.USER;
+import static com.xdavide9.turbobuy.user.AppUserRole.USER;
 
 @Entity
 @Table

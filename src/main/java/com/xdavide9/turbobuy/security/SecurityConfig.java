@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static com.xdavide9.turbobuy.security.AppUserRole.ADMIN;
+import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
 @Configuration
 @EnableWebSecurity

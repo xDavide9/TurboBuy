@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
-import static com.xdavide9.turbobuy.security.AppUserRole.ADMIN;
+import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
 @Configuration
 public class AppUserConfig {
