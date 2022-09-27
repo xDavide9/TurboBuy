@@ -1,18 +1,16 @@
 package com.xdavide9.turbobuy.user;
 
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AppUserService {
 
     private final AppUserRepository repository;
-
-    public AppUserService(AppUserRepository repository) {
-        this.repository = repository;
-    }
 
     public List<AppUser> getUsers() {
         return repository.findAll();

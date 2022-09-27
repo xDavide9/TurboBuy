@@ -1,6 +1,7 @@
 package com.xdavide9.turbobuy.security;
 
 import com.xdavide9.turbobuy.auth.AppUserDetailsService;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -13,15 +14,11 @@ import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
 @Configuration
 @EnableWebSecurity
+@AllArgsConstructor
 public class SecurityConfig {
 
     private final AppUserDetailsService appUserDetailsService;
     private final PasswordEncoder encoder;
-
-    public SecurityConfig(AppUserDetailsService appUserDetailsService, PasswordEncoder encoder) {
-        this.appUserDetailsService = appUserDetailsService;
-        this.encoder = encoder;
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
