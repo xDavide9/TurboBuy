@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/login").permitAll()
                 .usernameParameter("username")
                 .passwordParameter("password");
         return http.build();
