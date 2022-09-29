@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TurbobuyApplication {
 
     // todo implement csrf
-    // todo implement custom exception handling and passing to frontend
     // todo implement /register view with a form that perform a post request to its same url
+    // todo create error mapping
 
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
