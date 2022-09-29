@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
+                .formLogin().defaultSuccessUrl("/", true)
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")
                 .passwordParameter("password");
