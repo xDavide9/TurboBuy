@@ -33,7 +33,9 @@ public class SecurityConfig {
                 .formLogin().defaultSuccessUrl("/", true)
                 .loginPage("/login").permitAll()
                 .usernameParameter("username")
-                .passwordParameter("password");
+                .passwordParameter("password")
+                .and()
+                .logout().permitAll();
         return http.build();
     }
 

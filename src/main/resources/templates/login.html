@@ -14,6 +14,12 @@
 <div class="container">
     <form action="/login" class="form-signin" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div class="alert alert-danger" role="alert" th:if="${param.logout}">
+            You have been signed out.
+        </div>
         <p>
             <label class="sr-only" for="username">Username</label>
             <input autofocus class="form-control" id="username" name="username" placeholder="Username" required
