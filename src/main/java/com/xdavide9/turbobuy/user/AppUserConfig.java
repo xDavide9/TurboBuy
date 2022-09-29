@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
+
 @Configuration
 @AllArgsConstructor
 public class AppUserConfig {
