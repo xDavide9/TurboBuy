@@ -17,4 +17,9 @@ public class TemplateController {
     public String getHomeView() {
         return "home";
     }
+
+    @GetMapping(path = "register")
+    public String getRegisterView() {
+        return "register";
+    }
 }
