@@ -1,19 +1,22 @@
 package com.xdavide9.turbobuy.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.view.RedirectView;
 
 @ControllerAdvice
+@Slf4j
 public class ExceptionHandlers {
     @ExceptionHandler(UsernameAlreadyTakenException.class)
     public RedirectView handleUsernameAlreadyTakenException(Exception e) {
-        System.out.println(e.getMessage());
+        log.error(e.getMessage() + " Redirecting to /register?error", e);
         return new RedirectView("/register?error");
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public void handleNotFoundException(Exception e) {
-        System.out.println(e.getMessage());
+    public RedirectView handleNotFoundException(Exception e) {
+        log.error(e.getMessage() + " Redirecting to /api/v1/users");
+        return new RedirectView("/api/v1/users");
     }
 }
