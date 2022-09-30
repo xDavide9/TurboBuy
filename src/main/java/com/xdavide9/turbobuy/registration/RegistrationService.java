@@ -22,6 +22,6 @@ public class RegistrationService {
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         repository.save(user);
-        return new RedirectView("/login");
+        return new RedirectView("/");
     }
 }
