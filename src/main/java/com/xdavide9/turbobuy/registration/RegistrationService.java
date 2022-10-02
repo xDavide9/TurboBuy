@@ -25,6 +25,6 @@ public class RegistrationService {
         user.setPassword(encodedPassword);
         repository.save(user);
         log.info("Successfully registered user '{}'", username);
-        return new RedirectView("/");
+        return new RedirectView("/login");
     }
 }
