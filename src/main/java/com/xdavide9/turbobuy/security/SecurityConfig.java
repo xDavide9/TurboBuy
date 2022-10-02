@@ -23,19 +23,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "index", "/register").permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
+                .antMatchers("/register", "/login").not().authenticated()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().defaultSuccessUrl("/", true)
-                .loginPage("/login").permitAll()
+                .formLogin()
+                .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
+                .defaultSuccessUrl("/", true)
                 .and()
-                .logout().permitAll();
+                .logout().permitAll()
+                .and()
+                .csrf().disable();
         return http.build();
     }
 
