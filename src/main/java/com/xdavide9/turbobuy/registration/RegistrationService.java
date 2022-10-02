@@ -4,12 +4,14 @@ import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class RegistrationService {
 
     private final AppUserRepository repository;
@@ -22,6 +24,7 @@ public class RegistrationService {
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         repository.save(user);
+        log.info("Successfully registered user '{}'", username);
         return new RedirectView("/");
     }
 }
