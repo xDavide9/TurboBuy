@@ -22,6 +22,7 @@ public class AppUserConfig {
             repository.save(new AppUser(
                     "admin",
                     encoder.encode("admin"),
+                    ADMIN,
                     ADMIN.getGrantedAuthorities())
             );
         };

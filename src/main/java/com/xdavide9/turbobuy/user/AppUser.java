@@ -31,6 +31,8 @@ public class AppUser {
     @Column(unique = true)
     private String username;
     private String password;
+    @Enumerated(EnumType.STRING)
+    private AppUserRole role = USER;
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<SimpleGrantedAuthority> grantedAuthorities = USER.getGrantedAuthorities();
     private boolean isAccountNonExpired = true;
@@ -38,9 +40,10 @@ public class AppUser {
     private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
 
-    public AppUser(String username, String password, Set<SimpleGrantedAuthority> grantedAuthorities) {
+    public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
         this.password = password;
+        this.role = role;
         this.grantedAuthorities = grantedAuthorities;
     }
 

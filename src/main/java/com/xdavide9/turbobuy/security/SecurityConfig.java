@@ -19,6 +19,7 @@ public class SecurityConfig {
 
     private final AppUserDetailsService appUserDetailsService;
     private final PasswordEncoder encoder;
+    private final LoginSuccessHandler loginSuccessHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -34,7 +35,7 @@ public class SecurityConfig {
                 .loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/", true)
+                .successHandler(loginSuccessHandler)
                 .and()
                 .logout().permitAll()
                 .and()
