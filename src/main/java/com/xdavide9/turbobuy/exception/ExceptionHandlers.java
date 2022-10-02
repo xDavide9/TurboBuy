@@ -10,13 +10,15 @@ import org.springframework.web.servlet.view.RedirectView;
 public class ExceptionHandlers {
     @ExceptionHandler(UsernameAlreadyTakenException.class)
     public RedirectView handleUsernameAlreadyTakenException(Exception e) {
-        log.error(e.getMessage() + " Redirecting to /register?error", e);
+        log.error(e.getMessage());
+        log.error("Redirecting to '/register?error'");
         return new RedirectView("/register?error");
     }
 
     @ExceptionHandler(NotFoundException.class)
     public RedirectView handleNotFoundException(Exception e) {
-        log.error(e.getMessage() + " Redirecting to /api/v1/users");
+        log.error(e.getMessage());
+        log.error("Redirecting to '/api/v1/users'");
         return new RedirectView("/api/v1/users");
     }
 }

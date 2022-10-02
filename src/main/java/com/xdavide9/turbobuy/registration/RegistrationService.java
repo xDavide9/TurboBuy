@@ -20,11 +20,12 @@ public class RegistrationService {
     public RedirectView register(AppUser user) {
         String username = user.getUsername();
         if (repository.findByUsername(username).isPresent())
-            throw new UsernameAlreadyTakenException("Username " + username + " is taken.");
+            throw new UsernameAlreadyTakenException("Username '" + username + "' is taken.");
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         repository.save(user);
         log.info("Successfully registered user '{}'", username);
+        log.info("Redirecting to '/login'");
         return new RedirectView("/login");
     }
 }

@@ -4,6 +4,7 @@ import com.xdavide9.turbobuy.exception.NotFoundException;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AppUserDetailsService implements UserDetailsService {
 
     private final AppUserRepository repository;
@@ -18,7 +20,8 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@Param("username") String username) {
         AppUser appUser = repository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("User " + username + " not found."));
+                .orElseThrow(() -> new NotFoundException("User '" + username + "' not found."));
+        log.info("User '{}' with role '{}' successfully logged in", appUser.getUsername(), appUser.getRole());
         return new AppUserDetails(appUser);
     }
 }

@@ -20,7 +20,7 @@ public class AppUserService {
         return repository
                 .findById(userId)
                 .orElseThrow(() -> new NotFoundException(
-                        "User with id " + userId + " not found."
+                        "User with id '" + userId + "' not found."
                 ));
     }
 
@@ -28,7 +28,7 @@ public class AppUserService {
         return repository
                 .findByUsername(username)
                 .orElseThrow(() -> new NotFoundException(
-                        "User " + username + " not found."
+                        "User '" + username + "' not found."
                 ));
     }
 }

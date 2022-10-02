@@ -51,7 +51,6 @@ public class AppUserDetails implements UserDetails {
     }
 
     public boolean hasRole(AppUserRole role) {
-        System.out.println(appUser.getRole());
         return appUser.getRole().equals(role);
     }
 }
