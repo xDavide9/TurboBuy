@@ -28,8 +28,6 @@ public class SecurityConfig {
                 .antMatchers("/", "index", "/register").permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
                 .antMatchers("/register", "/login").not().authenticated()
-                .anyRequest()
-                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
