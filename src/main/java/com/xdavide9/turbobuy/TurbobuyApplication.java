@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TurbobuyApplication {
 
     // todo implement csrf
-    // todo create redirect enum
-    // todo create /error mapping
+    // todo start creating frontend with bootstrap and thymeleaf
 
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
