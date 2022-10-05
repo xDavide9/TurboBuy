@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
-@RequestMapping("register")
+@RequestMapping("/register")
 @AllArgsConstructor
 public class RegistrationController {
 

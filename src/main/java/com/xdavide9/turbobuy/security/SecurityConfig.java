@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import static com.xdavide9.turbobuy.security.Redirect.*;
 import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
 @Configuration
@@ -25,12 +26,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "index", "/register").permitAll()
+                .antMatchers(HOME.getUrl(), REGISTER.getUrl()).permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
-                .antMatchers("/register", "/login").not().authenticated()
+                .antMatchers(REGISTER.getUrl(), LOGIN.getUrl()).not().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage(LOGIN.getUrl())
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .successHandler(loginSuccessHandler)

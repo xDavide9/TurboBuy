@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/users")
+@RequestMapping("/api/v1/users")
 @AllArgsConstructor
 public class AppUserController {
 
@@ -20,12 +20,12 @@ public class AppUserController {
         return appUserService.getUsers();
     }
 
-    @GetMapping(path = "id/{userId}")
+    @GetMapping(path = "/id/{userId}")
     public AppUser getUserById(@PathVariable("userId") Integer userId) {
         return appUserService.getUserById(userId);
     }
 
-    @GetMapping(path = "username/{username}")
+    @GetMapping(path = "/username/{username}")
     public AppUser getUserByUsername(@PathVariable("username") String username) {
         return appUserService.getUserByUsername(username);
     }

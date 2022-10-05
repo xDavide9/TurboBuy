@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.auth;
 
-import com.xdavide9.turbobuy.exception.NotFoundException;
+import com.xdavide9.turbobuy.exception.UserNotFoundException;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class AppUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(@Param("username") String username) {
         AppUser appUser = repository.findByUsername(username)
-                .orElseThrow(() -> new NotFoundException("User '" + username + "' not found."));
+                .orElseThrow(() -> new UserNotFoundException("User '" + username + "' not found."));
         log.info("User '{}' with role '{}' successfully logged in", appUser.getUsername(), appUser.getRole());
         return new AppUserDetails(appUser);
     }

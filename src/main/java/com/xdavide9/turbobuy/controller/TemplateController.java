@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class TemplateController {
 
-    @GetMapping(path = "login")
-    public String getLoginView() {
-        return "login";
-    }
-
     @GetMapping
     public String getHomeView() {
         return "home";
+    }
+
+    @GetMapping(path = "login")
+    public String getLoginView() {
+        return "login";
     }
 
     @GetMapping(path = "register")

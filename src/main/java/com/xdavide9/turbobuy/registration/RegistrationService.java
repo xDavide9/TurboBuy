@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
+import static com.xdavide9.turbobuy.security.Redirect.LOGIN;
+
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -25,7 +27,7 @@ public class RegistrationService {
         user.setPassword(encodedPassword);
         repository.save(user);
         log.info("Successfully registered user '{}'", username);
-        log.info("Redirecting to '/login'");
-        return new RedirectView("/login");
+        log.info("Redirecting to '{}'", LOGIN.getUrl());
+        return new RedirectView(LOGIN.getUrl());
     }
 }
