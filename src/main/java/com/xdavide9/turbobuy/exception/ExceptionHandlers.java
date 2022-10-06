@@ -5,8 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.view.RedirectView;
 
-import static com.xdavide9.turbobuy.security.Redirect.REGISTER_ERROR;
-import static com.xdavide9.turbobuy.security.Redirect.USER_API;
+import static com.xdavide9.turbobuy.security.Redirect.*;
 
 @ControllerAdvice
 @Slf4j
@@ -19,9 +18,16 @@ public class ExceptionHandlers {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public RedirectView handleApiNotFoundException(Exception e) {
+    public RedirectView handleUserNotFoundException(Exception e) {
         log.error(e.getMessage());
         log.error("Redirecting to '{}'", USER_API.getUrl());
         return new RedirectView(USER_API.getUrl());
+    }
+
+    @ExceptionHandler(SaleNotFoundException.class)
+    public RedirectView handleSaleNotFoundException(Exception e) {
+        log.error(e.getMessage());
+        log.error("Redirecting to '{}'", SALE_API.getUrl());
+        return new RedirectView(SALE_API.getUrl());
     }
 }

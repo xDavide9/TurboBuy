@@ -17,7 +17,7 @@ public class AppUserConfig {
     private final AppUserRepository repository;
 
     @Bean
-    CommandLineRunner commandLineRunner() {
+    CommandLineRunner appUserCommandLineRunner() {
         return args -> {
             repository.save(new AppUser(
                     "admin",

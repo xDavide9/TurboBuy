@@ -9,7 +9,8 @@ public enum Redirect {
     LOGOUT("/logout"),
     REGISTER("/register"),
     REGISTER_ERROR("/register?error"),
-    USER_API("/api/v1/users");
+    USER_API("/api/v1/users"),
+    SALE_API("/api/v1/sales");
 
     private final String url;
 

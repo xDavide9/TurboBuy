@@ -1,0 +1,34 @@
+package com.xdavide9.turbobuy.sale;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Entity
+@Table
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Sale {
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "sale_generator"
+    )
+    @SequenceGenerator(
+            name = "sale_generator",
+            sequenceName = "sale_generator",
+            allocationSize = 1
+    )
+    private Integer saleId;
+    @Column(unique = true)
+    private String title;
+    private String description;
+
+    public Sale(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
+}
