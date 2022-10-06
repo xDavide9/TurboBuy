@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+@Entity(name = "Sale")
+@Table(name = "sale")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class Sale {
             sequenceName = "sale_generator",
             allocationSize = 1
     )
-    private Integer saleId;
+    private Integer id;
     @Column(unique = true)
     private String title;
     private String description;

@@ -16,11 +16,11 @@ public class AppUserService {
         return repository.findAll();
     }
 
-    public AppUser getUserById(Integer userId) {
+    public AppUser getUserById(Integer id) {
         return repository
-                .findById(userId)
+                .findById(id)
                 .orElseThrow(() -> new UserNotFoundException(
-                        "User with id '" + userId + "' not found."
+                        "User with id '" + id + "' not found."
                 ));
     }
 

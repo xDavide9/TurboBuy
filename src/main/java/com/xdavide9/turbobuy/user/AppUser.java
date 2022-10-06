@@ -10,8 +10,8 @@ import java.util.Set;
 
 import static com.xdavide9.turbobuy.user.AppUserRole.USER;
 
-@Entity
-@Table
+@Entity(name = "AppUser")
+@Table(name = "app_user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +27,7 @@ public class AppUser {
             sequenceName = "app_user_generator",
             allocationSize = 1
     )
-    private Integer userId;
+    private Integer id;
     @Column(unique = true)
     private String username;
     private String password;

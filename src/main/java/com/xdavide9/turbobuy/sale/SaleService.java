@@ -15,11 +15,11 @@ public class SaleService {
         return repository.findAll();
     }
 
-    public Sale getSaleById(Integer saleId) {
+    public Sale getSaleById(Integer id) {
         return repository
-                .findById(saleId)
+                .findById(id)
                 .orElseThrow(() -> new SaleNotFoundException(
-                        "Sale with id '" + saleId + "' not found."
+                        "Sale with id '" + id + "' not found."
                 ));
     }
 }

@@ -20,9 +20,9 @@ public class AppUserController {
         return appUserService.getUsers();
     }
 
-    @GetMapping(path = "/id/{userId}")
-    public AppUser getUserById(@PathVariable("userId") Integer userId) {
-        return appUserService.getUserById(userId);
+    @GetMapping(path = "/id/{id}")
+    public AppUser getUserById(@PathVariable("id") Integer id) {
+        return appUserService.getUserById(id);
     }
 
     @GetMapping(path = "/username/{username}")
