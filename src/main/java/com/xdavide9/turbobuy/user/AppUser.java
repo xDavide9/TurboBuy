@@ -1,11 +1,14 @@
 package com.xdavide9.turbobuy.user;
 
+import com.xdavide9.turbobuy.sale.Sale;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static com.xdavide9.turbobuy.user.AppUserRole.USER;
@@ -39,12 +42,32 @@ public class AppUser {
     private boolean isAccountNonLocked = true;
     private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "app_user_id")
+    private List<Sale> sales = new ArrayList<>();
 
     public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
         this.password = password;
         this.role = role;
         this.grantedAuthorities = grantedAuthorities;
+    }
+
+    public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities, List<Sale> sales) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.grantedAuthorities = grantedAuthorities;
+        this.sales = sales;
+    }
+
+    public AppUser(String username, String password, List<Sale> sales) {
+        this.username = username;
+        this.password = password;
+        this.sales = sales;
     }
 
     public AppUser(String username, String password) {

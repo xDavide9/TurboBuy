@@ -1,6 +1,7 @@
 package com.xdavide9.turbobuy.user;
 
 import com.xdavide9.turbobuy.exception.UserNotFoundException;
+import com.xdavide9.turbobuy.sale.Sale;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,13 @@ public class AppUserService {
                 .orElseThrow(() -> new UserNotFoundException(
                         "User '" + username + "' not found."
                 ));
+    }
+
+    public List<Sale> getSalesByUserId(Integer id) {
+        return getUserById(id).getSales();
+    }
+
+    public List<Sale> getSalesByUserUsername(String username) {
+        return getUserByUsername(username).getSales();
     }
 }
