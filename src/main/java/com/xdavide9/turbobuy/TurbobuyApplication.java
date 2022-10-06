@@ -8,7 +8,6 @@ public class TurbobuyApplication {
 
     // todo implement csrf
     // todo start creating frontend with bootstrap and thymeleaf
-    // todo create sale entity and map it to user
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
     }
