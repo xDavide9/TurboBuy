@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.controller;
+package com.xdavide9.turbobuy.template;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
