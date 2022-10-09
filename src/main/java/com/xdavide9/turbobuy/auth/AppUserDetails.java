@@ -1,7 +1,6 @@
 package com.xdavide9.turbobuy.auth;
 
 import com.xdavide9.turbobuy.user.AppUser;
-import com.xdavide9.turbobuy.user.AppUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -50,7 +49,7 @@ public class AppUserDetails implements UserDetails {
         return appUser.isEnabled();
     }
 
-    public boolean hasRole(AppUserRole role) {
-        return appUser.getRole().equals(role);
+    public AppUser getAppUser() {
+        return appUser;
     }
 }

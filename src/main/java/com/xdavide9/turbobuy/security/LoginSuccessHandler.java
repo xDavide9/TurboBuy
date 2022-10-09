@@ -1,6 +1,7 @@
 package com.xdavide9.turbobuy.security;
 
 import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.user.AppUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
@@ -24,10 +25,11 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
                                         Authentication authentication)
             throws IOException {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
+        AppUser appUser = userDetails.getAppUser();
         String redirect = request.getContextPath();
-        if (userDetails.hasRole(USER)) {
+        if (appUser.getRole().equals(USER)) {
             redirect = HOME.getUrl();
-        } else if (userDetails.hasRole(ADMIN)) {
+        } else if (appUser.getRole().equals(ADMIN)) {
             redirect = USER_API.getUrl();
         }
         response.sendRedirect(redirect);
