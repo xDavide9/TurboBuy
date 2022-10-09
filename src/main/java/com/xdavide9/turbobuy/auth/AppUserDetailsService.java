@@ -21,7 +21,6 @@ public class AppUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(@Param("username") String username) {
         AppUser appUser = repository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("User '" + username + "' not found."));
-        log.info("User '{}' with role '{}' successfully logged in", appUser.getUsername(), appUser.getRole());
         return new AppUserDetails(appUser);
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/register")
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @PostMapping(consumes = "application/x-www-form-urlencoded")
-    public RedirectView register(AppUser user) {
-        return registrationService.register(user);
+    public RedirectView register(HttpServletRequest request, AppUser user) {
+        return registrationService.register(request, user);
     }
 }

@@ -1,17 +1,20 @@
 package com.xdavide9.turbobuy.auth;
 
 import com.xdavide9.turbobuy.user.AppUser;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+@Slf4j
 public class AppUserDetails implements UserDetails {
 
     private final AppUser appUser;
 
     public AppUserDetails(AppUser appUser) {
         this.appUser = appUser;
+        log.info("Successfully logged in user '{}'", appUser.getUsername());
     }
 
     @Override
