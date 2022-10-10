@@ -23,6 +23,8 @@ public class Sale {
             allocationSize = 1
     )
     private Integer id;
+    @Column(name = "app_user_id")
+    private Integer appUserId;
     @Column(unique = true)
     private String title;
     private String description;
