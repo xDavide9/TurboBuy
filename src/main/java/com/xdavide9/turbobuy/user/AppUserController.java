@@ -21,9 +21,9 @@ public class AppUserController {
         return appUserService.getUsers();
     }
 
-    @GetMapping(path = "/id/{id}")
-    public AppUser getUserById(@PathVariable("id") Integer id) {
-        return appUserService.getUserById(id);
+    @GetMapping(path = "/id/{appUserId}")
+    public AppUser getUserById(@PathVariable("appUserId") Integer appUserId) {
+        return appUserService.getUserById(appUserId);
     }
 
     @GetMapping(path = "/username/{username}")
@@ -31,9 +31,9 @@ public class AppUserController {
         return appUserService.getUserByUsername(username);
     }
 
-    @GetMapping(path = "/id/{id}/sales")
-    public List<Sale> getSalesByUserId(@PathVariable("id") Integer id) {
-        return appUserService.getSalesByUserId(id);
+    @GetMapping(path = "/id/{appUserId}/sales")
+    public List<Sale> getSalesByUserId(@PathVariable("appUserId") Integer appUserId) {
+        return appUserService.getSalesByUserId(appUserId);
     }
 
     @GetMapping(path = "/username/{username}/sales")

@@ -19,8 +19,8 @@ public class SaleController {
         return saleService.getSales();
     }
 
-    @GetMapping("/id/{id}")
-    public Sale getSaleById(@PathVariable("id") Integer id) {
-        return saleService.getSaleById(id);
+    @GetMapping("/id/{saleId}")
+    public Sale getSaleById(@PathVariable("saleId") Integer saleId) {
+        return saleService.getSaleById(saleId);
     }
 }

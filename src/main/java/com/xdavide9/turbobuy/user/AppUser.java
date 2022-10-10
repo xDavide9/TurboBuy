@@ -30,7 +30,7 @@ public class AppUser {
             sequenceName = "app_user_generator",
             allocationSize = 1
     )
-    private Integer id;
+    private Integer appUserId;
     @Column(unique = true)
     private String username;
     private String password;

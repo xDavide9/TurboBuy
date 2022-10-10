@@ -17,11 +17,11 @@ public class AppUserService {
         return repository.findAll();
     }
 
-    public AppUser getUserById(Integer id) {
+    public AppUser getUserById(Integer appUserId) {
         return repository
-                .findById(id)
+                .findById(appUserId)
                 .orElseThrow(() -> new UserNotFoundException(
-                        "User with id '" + id + "' not found."
+                        "User with appUserId '" + appUserId + "' not found."
                 ));
     }
 
@@ -33,8 +33,8 @@ public class AppUserService {
                 ));
     }
 
-    public List<Sale> getSalesByUserId(Integer id) {
-        return getUserById(id).getSales();
+    public List<Sale> getSalesByUserId(Integer appUserId) {
+        return getUserById(appUserId).getSales();
     }
 
     public List<Sale> getSalesByUserUsername(String username) {

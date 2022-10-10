@@ -22,7 +22,7 @@ public class Sale {
             sequenceName = "sale_generator",
             allocationSize = 1
     )
-    private Integer id;
+    private Integer saleId;
     @Column(name = "app_user_id")
     private Integer appUserId;
     @Column(unique = true)
