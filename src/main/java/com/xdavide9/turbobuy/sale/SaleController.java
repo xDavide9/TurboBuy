@@ -19,10 +19,13 @@ public class SaleController {
         return saleService.getSales();
     }
 
-    @GetMapping("/saleId/{saleId}")
+    @GetMapping("/id/{saleId}")
     public Sale getSaleById(@PathVariable("saleId") Integer saleId) {
         return saleService.getSaleById(saleId);
     }
 
-
+    @GetMapping("/user/id/{appUserId}")
+    public List<Sale> getSalesByAppUserId(@PathVariable("appUserId") Integer appUserId) {
+        return saleService.getSalesByAppUserId(appUserId);
+    }
 }

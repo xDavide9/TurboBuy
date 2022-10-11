@@ -22,4 +22,13 @@ public class SaleService {
                         "Sale with saleId '" + saleId + "' not found."
                 ));
     }
+
+    public List<Sale> getSalesByAppUserId(Integer appUserId) {
+        // todo debug exception is never thrown
+        return repository
+                .findByAppUserId(appUserId)
+                .orElseThrow(() -> new SaleNotFoundException(
+                        "Sales of user with appUserId '" + appUserId + "' not found."
+                ));
+    }
 }
