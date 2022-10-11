@@ -31,7 +31,7 @@ public class AppUserController {
         return appUserService.getUserByUsername(username);
     }
 
-    @GetMapping(path = "/id/{appUserId}/sales")
+    @GetMapping(path = "/appUserId/{appUserId}/sales")
     public List<Sale> getSalesByUserId(@PathVariable("appUserId") Integer appUserId) {
         return appUserService.getSalesByUserId(appUserId);
     }
