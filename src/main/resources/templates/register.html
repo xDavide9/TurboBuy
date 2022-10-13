@@ -27,7 +27,10 @@
             <label class="sr-only mb-1" for="password">Password</label>
             <input class="form-control" id="password" name="password" placeholder="Password" required type="password">
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <p class="position-relative">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+            <a class="link-primary position-absolute end-0 bottom-0" th:href="login">Already Registered?</a>
+        </p>
     </form>
 </div>
 <script crossorigin="anonymous"
