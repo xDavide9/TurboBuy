@@ -22,4 +22,9 @@ public class TemplateController {
     public String getRegisterView() {
         return "register";
     }
+
+    @GetMapping(path = "sales")
+    public String getSalesView() {
+        return "sales";
+    }
 }

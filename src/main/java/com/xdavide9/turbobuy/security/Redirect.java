@@ -10,7 +10,8 @@ public enum Redirect {
     REGISTER("/register"),
     REGISTER_ERROR("/register?error"),
     USER_API("/api/v1/users"),
-    SALE_API("/api/v1/sales");
+    SALE_API("/api/v1/sales"),
+    SALES("/sales");
 
     private final String url;
 

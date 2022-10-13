@@ -26,9 +26,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers(HOME.getUrl(), REGISTER.getUrl()).permitAll()
+                .antMatchers(HOME.getUrl()).permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
                 .antMatchers(REGISTER.getUrl(), LOGIN.getUrl()).not().authenticated()
+                .antMatchers(SALES.getUrl()).authenticated()
                 .and()
                 .formLogin()
                 .loginPage(LOGIN.getUrl())
