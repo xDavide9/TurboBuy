@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.onsale;
+package com.xdavide9.turbobuy.sales;
 
 import com.xdavide9.turbobuy.auth.AppUserDetails;
 import com.xdavide9.turbobuy.sale.Sale;
@@ -15,7 +15,7 @@ import static com.xdavide9.turbobuy.security.Redirect.HOME;
 
 @Service
 @AllArgsConstructor
-public class OnSaleService {
+public class SalesService {
 
     private final AppUserRepository appUserRepository;
 

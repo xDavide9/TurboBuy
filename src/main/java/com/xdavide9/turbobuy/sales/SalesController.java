@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.onsale;
+package com.xdavide9.turbobuy.sales;
 
 import com.xdavide9.turbobuy.sale.Sale;
 import lombok.AllArgsConstructor;
@@ -11,14 +11,14 @@ import org.springframework.web.servlet.view.RedirectView;
 @RestController
 @RequestMapping("/")
 @AllArgsConstructor
-public class OnSaleController {
-    private final OnSaleService onSaleService;
+public class SalesController {
+    private final SalesService salesService;
 
     @PostMapping(
             consumes = "application/x-www-form-urlencoded",
             path = "sales"
     )
     public RedirectView addNewSale(Sale sale, Authentication authentication) {
-        return onSaleService.addNewSale(sale, authentication);
+        return salesService.addNewSale(sale, authentication);
     }
 }
