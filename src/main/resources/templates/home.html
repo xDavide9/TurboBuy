@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:sec="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -14,15 +13,7 @@
 <body>
 <div th:insert="fragments/header.html :: header"></div>
 <div class="container">
-    <h1>Hello World!</h1>
-    <p>This page is whitelisted!</p>
-    <div sec:authorize="!isAuthenticated()">
-        <a href="/login">login</a>
-    </div>
-    <div sec:authorize="isAuthenticated()">
-        <a href="/logout">logout</a>
-        <a href="/sales">sales</a>
-    </div>
+    <h1>Hello World</h1>
 </div>
 <script crossorigin="anonymous"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
