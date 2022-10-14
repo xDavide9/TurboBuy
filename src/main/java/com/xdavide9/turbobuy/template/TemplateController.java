@@ -27,4 +27,19 @@ public class TemplateController {
     public String getSalesView() {
         return "sales";
     }
+
+    @GetMapping(path = "contact")
+    public String getContactView() {
+        return "contact";
+    }
+
+    @GetMapping(path = "about")
+    public String getAboutView() {
+        return "about";
+    }
+
+    @GetMapping(path = "account")
+    public String getAccountView() {
+        return "account";
+    }
 }
