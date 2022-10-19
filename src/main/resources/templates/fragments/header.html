@@ -8,6 +8,10 @@
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Header</title>
+    <!--
+        reference to style of fragments must be found in all pages where the fragment is used
+        and not in this head, because this page is never rendered
+    -->
 </head>
 <body>
 <div th:fragment="header">
@@ -39,17 +43,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
+                    <li class="nav-item mobile">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item mobile">
+                        <a class="nav-link" href="/register">Register</a>
+                    </li>
                 </ul>
-                <a class="mx-2" href="/register" sec:authorize="!isAuthenticated()">
+                <a class="mx-2 desktop" href="/register" sec:authorize="!isAuthenticated()">
                     <button class="btn-outline-dark btn">Register</button>
                 </a>
-                <a href="/login" sec:authorize="!isAuthenticated()">
+                <a class="desktop" href="/login" sec:authorize="!isAuthenticated()">
                     <button class="btn-outline-dark btn">Login</button>
                 </a>
-                <a class="mx-2" href="/account" sec:authorize="isAuthenticated()">
+                <a class="mx-2 desktop" href="/account" sec:authorize="isAuthenticated()">
                     <img alt="Account" src="/images/account.png" width="40">
                 </a>
-                <a href="/logout" sec:authorize="isAuthenticated()">
+                <a class="desktop" href="/logout" sec:authorize="isAuthenticated()">
                     <button class="btn-outline-dark btn">Logout</button>
                 </a>
             </div>
