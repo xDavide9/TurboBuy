@@ -11,7 +11,9 @@ public enum Redirect {
     REGISTER_ERROR("/register?error"),
     USER_API("/api/v1/users"),
     SALE_API("/api/v1/sales"),
-    SALES("/sales");
+    SALES("/sales"),
+    ACCOUNT("/account");
+
 
     private final String url;
 

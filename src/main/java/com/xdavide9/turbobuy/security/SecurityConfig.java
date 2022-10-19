@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .antMatchers(HOME.getUrl()).permitAll()
                 .antMatchers("/api/**").hasRole(ADMIN.name())
                 .antMatchers(REGISTER.getUrl(), LOGIN.getUrl()).not().authenticated()
-                .antMatchers(SALES.getUrl()).authenticated()
+                .antMatchers(SALES.getUrl(), ACCOUNT.getUrl()).authenticated()
                 .and()
                 .formLogin()
                 .loginPage(LOGIN.getUrl())
