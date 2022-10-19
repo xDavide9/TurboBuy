@@ -14,7 +14,14 @@
 <body>
 <div th:insert="fragments/header.html :: header"></div>
 <div class="container">
-    <h1>Hello Account</h1>
+    <h1>Info</h1>
+    Username: <span th:text="${currentUser.getUsername()}"></span></br>
+    Password: <span th:text="${currentUser.getPassword()}"></span>
+    <h1>Sales</h1>
+    <div th:each="sale : ${currentUser.getSales()}">
+        Title: <span th:text="${sale.title}">title</span></br>
+        Description: <span th:text="${sale.description}">description</span>
+    </div>
 </div>
 <script crossorigin="anonymous"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"

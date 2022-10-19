@@ -1,12 +1,29 @@
 package com.xdavide9.turbobuy.template;
 
+import com.xdavide9.turbobuy.auth.AppUserDetails;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
 public class TemplateController {
+
+    @GetMapping(path = "account")
+    public String getAccountView(Model model, Authentication authentication) {
+        model.addAttribute(
+                "currentUser",
+                ((AppUserDetails) authentication.getPrincipal()).getAppUser()
+        );
+        return "account";
+    }
+
+    @GetMapping(path = "sales")
+    public String getSalesView() {
+        return "sales";
+    }
 
     @GetMapping
     public String getHomeView() {
@@ -23,11 +40,6 @@ public class TemplateController {
         return "register";
     }
 
-    @GetMapping(path = "sales")
-    public String getSalesView() {
-        return "sales";
-    }
-
     @GetMapping(path = "contact")
     public String getContactView() {
         return "contact";
@@ -36,10 +48,5 @@ public class TemplateController {
     @GetMapping(path = "about")
     public String getAboutView() {
         return "about";
-    }
-
-    @GetMapping(path = "account")
-    public String getAccountView() {
-        return "account";
     }
 }

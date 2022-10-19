@@ -44,7 +44,8 @@ public class AppUser {
     private boolean isEnabled = true;
     @OneToMany(
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     @JoinColumn(name = "app_user_id")
     private List<Sale> sales = new ArrayList<>();
