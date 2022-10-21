@@ -23,14 +23,14 @@
         <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">
                 Username
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" id="open-username-card">
                     <img alt="edit" src="/images/pencil-fill.svg">
                 </a>
             </h6>
             <p class="card-text" th:text="${currentUser.getUsername()}"></p>
             <h6 class="card-subtitle mb-2 text-muted">
                 Password
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" id="open-password-card">
                     <img alt="edit" src="/images/pencil-fill.svg">
                 </a>
             </h6>
@@ -38,10 +38,10 @@
             <a class="btn btn-dark" href="#">My Sales</a>
         </div>
     </div>
-    <div class="card" id="change-username">
+    <div class="card" id="username-card">
         <div class="card-header position-relative">
             Change Username
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" id="close-username-card">
                 <img alt="x" class="position-absolute end-0 top-0" src="/images/x.svg">
             </a>
         </div>
@@ -64,10 +64,10 @@
             </form>
         </div>
     </div>
-    <div class="card" id="change-password">
+    <div class="card" id="password-card">
         <div class="card-header position-relative">
             Change Password
-            <a href="javascript:void(0)">
+            <a href="javascript:void(0)" id="close-password-card">
                 <img alt="x" class="position-absolute end-0 top-0" src="/images/x.svg">
             </a>
         </div>
@@ -91,6 +91,7 @@
         </div>
     </div>
 </div>
+<script src="/js/account.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
