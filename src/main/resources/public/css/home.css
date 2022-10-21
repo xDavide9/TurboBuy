@@ -1,54 +1,31 @@
-#home .cover {
+.cover {
     z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-image: url(../images/portrait-cover.jpg);
+    background-image: url(../images/cover.jpg);
     background-size: cover;
     backdrop-filter: blur(5px);
 }
 
-#home .content {
-    margin-top: 125px;
-    scale: 1.2;
-}
-
 /*sm*/
 @media (min-width: 576px) {
-
 }
 
 /*md*/
 @media (min-width: 768px) {
-    #home .cover {
-        background-image: url(../images/landscape-cover.jpg);
-    }
-
-    #home .content {
-        position: relative;
-        right: 50px;
-    }
 }
 
 /*lg*/
 @media (min-width: 992px) {
-    #home .content {
-        right: 100px;
-    }
 }
 
 /*xl*/
 @media (min-width: 1200px) {
-    #home .content {
-        right: 150px;
-    }
 }
 
 /*xxl*/
 @media (min-width: 1400px) {
-    #home .content {
-        right: 200px;
-    }
 }
