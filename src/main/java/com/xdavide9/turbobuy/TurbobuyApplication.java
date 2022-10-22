@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TurbobuyApplication {
 
     // todo implement csrf
+    // todo implement change username form with ajax
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
     }
