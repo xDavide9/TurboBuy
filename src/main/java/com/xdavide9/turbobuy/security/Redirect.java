@@ -12,7 +12,10 @@ public enum Redirect {
     USER_API("/api/v1/users"),
     SALE_API("/api/v1/sales"),
     SALES("/sales"),
-    ACCOUNT("/account");
+    ACCOUNT("/account"),
+    ACCOUNT_CHANGE_USERNAME("/account/username"),
+    ACCOUNT_CHANGE_USERNAME_TAKEN("/account?taken"),
+    ACCOUNT_CHANGE_USERNAME_NO_MATCH("/account?err");
 
 
     private final String url;

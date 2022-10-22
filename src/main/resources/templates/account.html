@@ -47,8 +47,11 @@
         </div>
         <div class="card-body">
             <form action="#">
-                <div class="alert alert-danger" role="alert" th:if="${param.username}">
-                    Incorrect Password
+                <div class="alert alert-danger" role="alert" th:if="${param.taken}">
+                    Username Already Taken
+                </div>
+                <div class="alert alert-danger" role="alert" th:if="${param.err}">
+                    Incorrect Username
                 </div>
                 <p>
                     <label class="sr-only mb-1" for="current-username">Current Username</label>
