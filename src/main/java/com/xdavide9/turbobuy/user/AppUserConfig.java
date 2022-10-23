@@ -1,5 +1,6 @@
 package com.xdavide9.turbobuy.user;
 
+import com.xdavide9.turbobuy.account.UsernameChange;
 import com.xdavide9.turbobuy.sale.Sale;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -41,6 +42,11 @@ public class AppUserConfig {
             sales.add(new Sale(
                     "Used Toaster",
                     "bruh"
+            ));
+            List<UsernameChange> usernameChanges = user.getUsernameChanges();
+            usernameChanges.add(new UsernameChange(
+                    "current",
+                    "user"
             ));
 
             AppUser user2 = new AppUser(

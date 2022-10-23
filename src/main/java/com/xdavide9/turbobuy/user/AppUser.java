@@ -1,5 +1,6 @@
 package com.xdavide9.turbobuy.user;
 
+import com.xdavide9.turbobuy.account.UsernameChange;
 import com.xdavide9.turbobuy.sale.Sale;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -51,6 +52,12 @@ public class AppUser {
     )
     @JoinColumn(name = "app_user_id")
     private List<Sale> sales = new ArrayList<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "app_user_id")
+    private List<UsernameChange> usernameChanges = new ArrayList<>();
 
     public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
