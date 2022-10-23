@@ -13,8 +13,9 @@ public class ExceptionHandlers {
     @ExceptionHandler(UsernameAlreadyTakenException.class)
     public RedirectView handleUsernameAlreadyTakenException(UsernameAlreadyTakenException e) {
         log.error("UsernameAlreadyTakenException", e);
-        log.error("Redirecting to '{}'", REGISTER_ERROR.getUrl());
-        return new RedirectView(REGISTER_ERROR.getUrl());
+        String redirect = REGISTER_ERROR.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
     }
 
     @ExceptionHandler(SaleAlreadyPresentException.class)
@@ -26,16 +27,18 @@ public class ExceptionHandlers {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public RedirectView handleUserNotFoundException(Exception e) {
-        log.error(e.getMessage());
-        log.error("Redirecting to '{}'", USER_API.getUrl());
-        return new RedirectView(USER_API.getUrl());
+    public RedirectView handleUserNotFoundException(UserNotFoundException e) {
+        log.error("UserNotFoundException", e);
+        String redirect = USER_API.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
     }
 
     @ExceptionHandler(SaleNotFoundException.class)
-    public RedirectView handleSaleNotFoundException(Exception e) {
-        log.error(e.getMessage());
-        log.error("Redirecting to '{}'", SALE_API.getUrl());
-        return new RedirectView(SALE_API.getUrl());
+    public RedirectView handleSaleNotFoundException(SaleNotFoundException e) {
+        log.error("SaleNotFoundException", e);
+        String redirect = SALE_API.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
     }
 }
