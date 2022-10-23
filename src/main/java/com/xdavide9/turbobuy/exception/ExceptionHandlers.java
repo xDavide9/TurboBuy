@@ -12,9 +12,17 @@ import static com.xdavide9.turbobuy.security.Redirect.*;
 public class ExceptionHandlers {
     @ExceptionHandler(UsernameAlreadyTakenException.class)
     public RedirectView handleUsernameAlreadyTakenException(UsernameAlreadyTakenException e) {
-        log.error(e.getMessage());
+        log.error("UsernameAlreadyTakenException", e);
         log.error("Redirecting to '{}'", REGISTER_ERROR.getUrl());
         return new RedirectView(REGISTER_ERROR.getUrl());
+    }
+
+    @ExceptionHandler(SaleAlreadyPresentException.class)
+    public RedirectView handleSaleAlreadyPresentException(SaleAlreadyPresentException e) {
+        log.error("SaleAlreadyPresentException", e);
+        String redirect = SALES_ERROR.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
     }
 
     @ExceptionHandler(UserNotFoundException.class)

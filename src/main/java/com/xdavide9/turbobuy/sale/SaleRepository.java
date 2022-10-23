@@ -14,4 +14,6 @@ public interface SaleRepository extends JpaRepository<Sale, Integer> {
             nativeQuery = true
     )
     Optional<List<Sale>> findByAppUserId(Integer appUserId);
+
+    Optional<Object> findByTitle(String title);
 }

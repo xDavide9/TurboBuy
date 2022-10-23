@@ -1,7 +1,9 @@
 package com.xdavide9.turbobuy.sales;
 
 import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.exception.SaleAlreadyPresentException;
 import com.xdavide9.turbobuy.sale.Sale;
+import com.xdavide9.turbobuy.sale.SaleRepository;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
@@ -22,10 +24,13 @@ import static com.xdavide9.turbobuy.security.Redirect.HOME;
 public class SalesService {
 
     private final AppUserRepository appUserRepository;
+    private final SaleRepository saleRepository;
 
     public RedirectView addNewSale(Sale sale, Authentication authentication, HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
+        if (saleRepository.findByTitle(sale.getTitle()).isPresent())
+            throw new SaleAlreadyPresentException("Sale '" + sale.getTitle() + "' already present");
         Set<Sale> sales = appUser.getSales();
         sales.add(sale);
         appUser.setSales(sales);
