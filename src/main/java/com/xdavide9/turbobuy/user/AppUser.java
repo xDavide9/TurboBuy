@@ -7,8 +7,7 @@ import org.hibernate.Hibernate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -51,13 +50,14 @@ public class AppUser {
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "app_user_id")
-    private List<Sale> sales = new ArrayList<>();
+    private Set<Sale> sales = new HashSet<>();
     @OneToMany(
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     @JoinColumn(name = "app_user_id")
-    private List<UsernameChange> usernameChanges = new ArrayList<>();
+    private Set<UsernameChange> usernameChanges = new HashSet<>();
 
     public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities) {
         this.username = username;
@@ -66,7 +66,7 @@ public class AppUser {
         this.grantedAuthorities = grantedAuthorities;
     }
 
-    public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities, List<Sale> sales) {
+    public AppUser(String username, String password, AppUserRole role, Set<SimpleGrantedAuthority> grantedAuthorities, Set<Sale> sales) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -74,7 +74,7 @@ public class AppUser {
         this.sales = sales;
     }
 
-    public AppUser(String username, String password, List<Sale> sales) {
+    public AppUser(String username, String password, Set<Sale> sales) {
         this.username = username;
         this.password = password;
         this.sales = sales;

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
+import java.util.Set;
 
 import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
 
@@ -34,7 +34,7 @@ public class AppUserConfig {
                     "user",
                     encoder.encode("user")
             );
-            List<Sale> sales = user.getSales();
+            Set<Sale> sales = user.getSales();
             sales.add(new Sale(
                     "Macbook air m1",
                     "Beautiful"
@@ -43,7 +43,7 @@ public class AppUserConfig {
                     "Used Toaster",
                     "bruh"
             ));
-            List<UsernameChange> usernameChanges = user.getUsernameChanges();
+            Set<UsernameChange> usernameChanges = user.getUsernameChanges();
             usernameChanges.add(new UsernameChange(
                     "current",
                     "user"
@@ -53,7 +53,7 @@ public class AppUserConfig {
                     "user2",
                     encoder.encode("user2")
             );
-            List<Sale> sales2 = user2.getSales();
+            Set<Sale> sales2 = user2.getSales();
             sales2.add(new Sale(
                     "Tesla Model X",
                     "Awesome"

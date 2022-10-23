@@ -3,8 +3,10 @@ package com.xdavide9.turbobuy.account;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RestController
 @RequestMapping("/account")
@@ -17,7 +19,7 @@ public class AccountController {
             path = "/username",
             consumes = "application/json"
     )
-    public void changeUsername(Authentication authentication, String currentUsername, String newUsername) {
-        accountService.changeUsername(authentication, currentUsername, newUsername);
+    public RedirectView changeUsername(@RequestBody UsernameChange usernameChange, Authentication authentication) {
+        return accountService.changeUsername(usernameChange, authentication);
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -32,12 +33,12 @@ public class AppUserController {
     }
 
     @GetMapping(path = "/id/{appUserId}/sales")
-    public List<Sale> getSalesByUserId(@PathVariable("appUserId") Integer appUserId) {
+    public Set<Sale> getSalesByUserId(@PathVariable("appUserId") Integer appUserId) {
         return appUserService.getSalesByUserId(appUserId);
     }
 
     @GetMapping(path = "/username/{username}/sales")
-    public List<Sale> getSalesByUserUsername(@PathVariable("username") String username) {
+    public Set<Sale> getSalesByUserUsername(@PathVariable("username") String username) {
         return appUserService.getSalesByUserUsername(username);
     }
 }

@@ -13,21 +13,8 @@ public class ExceptionHandlers {
     @ExceptionHandler(UsernameAlreadyTakenException.class)
     public RedirectView handleUsernameAlreadyTakenException(UsernameAlreadyTakenException e) {
         log.error(e.getMessage());
-        String redirect;
-        if (e.isRegistering()) {
-            redirect = REGISTER_ERROR.getUrl();
-        } else {
-            redirect = ACCOUNT_CHANGE_USERNAME_TAKEN.getUrl();
-        }
-        log.error("Redirecting to '{}'", redirect);
-        return new RedirectView(redirect);
-    }
-
-    @ExceptionHandler(UsernamesDoNotMatchException.class)
-    public RedirectView handleUsernamesDoNotMatchException(UsernamesDoNotMatchException e) {
-        log.error(e.getMessage());
-        log.error("Redirecting to '{}'", ACCOUNT_CHANGE_USERNAME_NO_MATCH.getUrl());
-        return new RedirectView(ACCOUNT_CHANGE_USERNAME_NO_MATCH.getUrl());
+        log.error("Redirecting to '{}'", REGISTER_ERROR.getUrl());
+        return new RedirectView(REGISTER_ERROR.getUrl());
     }
 
     @ExceptionHandler(UserNotFoundException.class)

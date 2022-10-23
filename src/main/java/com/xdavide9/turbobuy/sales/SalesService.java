@@ -10,7 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
+import java.util.Set;
 
 import static com.xdavide9.turbobuy.security.Redirect.HOME;
 
@@ -24,7 +24,7 @@ public class SalesService {
     public RedirectView addNewSale(Sale sale, Authentication authentication) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
-        List<Sale> sales = appUser.getSales();
+        Set<Sale> sales = appUser.getSales();
         sales.add(sale);
         appUser.setSales(sales);
         appUserRepository.save(appUser);

@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -33,11 +34,11 @@ public class AppUserService {
                 ));
     }
 
-    public List<Sale> getSalesByUserId(Integer appUserId) {
+    public Set<Sale> getSalesByUserId(Integer appUserId) {
         return getUserById(appUserId).getSales();
     }
 
-    public List<Sale> getSalesByUserUsername(String username) {
+    public Set<Sale> getSalesByUserUsername(String username) {
         return getUserByUsername(username).getSales();
     }
 }
