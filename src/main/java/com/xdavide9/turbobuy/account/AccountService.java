@@ -9,6 +9,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Set;
 
 import static com.xdavide9.turbobuy.security.Redirect.HOME;
@@ -20,7 +22,7 @@ public class AccountService {
 
     private final AppUserRepository repository;
 
-    public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication) {
+    public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication, HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
         Set<UsernameChange> usernameChanges = appUser.getUsernameChanges();
@@ -32,6 +34,12 @@ public class AccountService {
                 "User '" + usernameChange.getCurrentUsername() +
                         "' changed his username to '" + usernameChange.getNewUsername() + "'"
         );
+        // logging user out to apply changes
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
         return new RedirectView(HOME.getUrl());
     }
 }

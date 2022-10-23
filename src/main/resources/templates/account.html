@@ -46,7 +46,7 @@
             </a>
         </div>
         <div class="card-body">
-            <form action="#">
+            <form action="/account/username" method="post">
                 <div class="alert alert-danger" role="alert" th:if="${param.taken}">
                     Username Already Taken
                 </div>
@@ -55,12 +55,12 @@
                 </div>
                 <p>
                     <label class="sr-only mb-1" for="current-username">Current Username</label>
-                    <input autofocus class="form-control" id="current-username" name="current-username"
+                    <input autofocus class="form-control" id="current-username" name="currentUsername"
                            placeholder="Current Username" required type="text">
                 </p>
                 <p>
                     <label class="sr-only mb-1" for="new-username">New Username</label>
-                    <input autofocus class="form-control" id="new-username" name="new-username"
+                    <input autofocus class="form-control" id="new-username" name="newUsername"
                            placeholder="New Username" required type="text">
                 </p>
                 <button class="btn btn-dark btn-block" type="submit">Submit</button>
