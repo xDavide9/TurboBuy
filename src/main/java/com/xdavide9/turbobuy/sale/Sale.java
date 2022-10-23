@@ -1,14 +1,16 @@
 package com.xdavide9.turbobuy.sale;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity(name = "Sale")
 @Table(name = "sale")
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Sale {
@@ -32,5 +34,18 @@ public class Sale {
     public Sale(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Sale sale = (Sale) o;
+        return saleId != null && Objects.equals(saleId, sale.saleId);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

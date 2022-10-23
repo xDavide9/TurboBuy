@@ -1,21 +1,23 @@
 package com.xdavide9.turbobuy.user;
 
 import com.xdavide9.turbobuy.sale.Sale;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import static com.xdavide9.turbobuy.user.AppUserRole.USER;
 
 @Entity(name = "AppUser")
 @Table(name = "app_user")
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppUser {
@@ -74,5 +76,18 @@ public class AppUser {
     public AppUser(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        AppUser appUser = (AppUser) o;
+        return appUserId != null && Objects.equals(appUserId, appUser.appUserId);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
