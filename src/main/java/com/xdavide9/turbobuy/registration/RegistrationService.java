@@ -25,7 +25,7 @@ public class RegistrationService {
     public RedirectView register(HttpServletRequest request, AppUser user) {
         String username = user.getUsername();
         if (repository.findByUsername(username).isPresent())
-            throw new UsernameAlreadyTakenException("Username '" + username + "' is taken.");
+            throw new UsernameAlreadyTakenException("Username '" + username + "' is taken.", true);
         String decodedPassword = user.getPassword();
         String encodedPassword = encoder.encode(user.getPassword());
         user.setPassword(encodedPassword);

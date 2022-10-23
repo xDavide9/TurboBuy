@@ -1,6 +1,8 @@
 package com.xdavide9.turbobuy.account;
 
 import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
+import com.xdavide9.turbobuy.exception.UsernamesDoNotMatchException;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
@@ -20,19 +22,28 @@ import static com.xdavide9.turbobuy.security.Redirect.HOME;
 @Slf4j
 public class AccountService {
 
-    private final AppUserRepository repository;
+    private final AppUserRepository appUserRepository;
 
     public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication, HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
+        String inputCurrentUsername = usernameChange.getCurrentUsername();
+        String actualCurrentUsername = appUser.getUsername();
+        String newUsername = usernameChange.getNewUsername();
+        if (!(inputCurrentUsername.equals(actualCurrentUsername)))
+            throw new UsernamesDoNotMatchException(
+                    "input '" + inputCurrentUsername +
+                            "' does not match '" + actualCurrentUsername + "'");
+        if (appUserRepository.findByUsername(newUsername).isPresent())
+            throw new UsernameAlreadyTakenException("Username '" + newUsername + "' already present", false);
         Set<UsernameChange> usernameChanges = appUser.getUsernameChanges();
         usernameChanges.add(usernameChange);
         appUser.setUsernameChanges(usernameChanges);
-        appUser.setUsername(usernameChange.getNewUsername());
-        repository.save(appUser);
+        appUser.setUsername(newUsername);
+        appUserRepository.save(appUser);
         log.info(
-                "User '" + usernameChange.getCurrentUsername() +
-                        "' changed his username to '" + usernameChange.getNewUsername() + "'"
+                "User '" + inputCurrentUsername +
+                        "' changed his username to '" + newUsername + "'"
         );
         // logging user out to apply changes
         try {
