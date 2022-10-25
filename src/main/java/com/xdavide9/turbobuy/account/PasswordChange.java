@@ -1,4 +1,4 @@
 package com.xdavide9.turbobuy.account;
 
-public class PasswordChange {
+public record PasswordChange(String currentPassword, String newPassword) {
 }

@@ -23,4 +23,12 @@ public class AccountController {
     public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication, HttpServletRequest request) {
         return accountService.changeUsername(usernameChange, authentication, request);
     }
+
+    @PostMapping(
+            path = "password",
+            consumes = "application/x-www-form-urlencoded"
+    )
+    public RedirectView changePassword(PasswordChange passwordChange, Authentication authentication, HttpServletRequest request) {
+        return accountService.changePassword(passwordChange, authentication, request);
+    }
 }

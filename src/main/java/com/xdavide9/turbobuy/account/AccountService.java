@@ -8,6 +8,7 @@ import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -23,6 +24,7 @@ import static com.xdavide9.turbobuy.security.Redirect.HOME;
 public class AccountService {
 
     private final AppUserRepository appUserRepository;
+    private final PasswordEncoder encoder;
 
     public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication, HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
@@ -51,6 +53,21 @@ public class AccountService {
         } catch (ServletException e) {
             throw new RuntimeException(e);
         }
+        return new RedirectView(HOME.getUrl());
+    }
+
+    public RedirectView changePassword(PasswordChange passwordChange, Authentication authentication, HttpServletRequest request) {
+        AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
+        AppUser appUser = userDetails.getAppUser();
+        // todo add validation
+        appUser.setPassword(encoder.encode(passwordChange.newPassword()));
+        appUserRepository.save(appUser);
+        try {
+            request.logout();
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
+        log.info("User '" + appUser.getUsername() + "' changed his password");
         return new RedirectView(HOME.getUrl());
     }
 }

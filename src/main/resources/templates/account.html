@@ -75,19 +75,19 @@
             </a>
         </div>
         <div class="card-body">
-            <form action="#">
+            <form action="/account/password" method="post">
                 <div class="alert alert-danger" role="alert" th:if="${param.password}">
                     Incorrect Password
                 </div>
                 <p>
                     <label class="sr-only mb-1" for="current-password">Current Password</label>
-                    <input autofocus class="form-control" id="current-password" name="current-password"
-                           placeholder="Current Password" required type="text">
+                    <input autofocus class="form-control" id="current-password" name="currentPassword"
+                           placeholder="Current Password" required type="password">
                 </p>
                 <p>
                     <label class="sr-only mb-1" for="new-password">New Password</label>
-                    <input autofocus class="form-control" id="new-password" name="new-password"
-                           placeholder="New Password" required type="text">
+                    <input autofocus class="form-control" id="new-password" name="newPassword"
+                           placeholder="New Password" required type="password">
                 </p>
                 <button class="btn btn-dark btn-block" type="submit">Submit</button>
             </form>
