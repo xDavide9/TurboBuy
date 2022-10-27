@@ -16,7 +16,7 @@ public enum Redirect {
     ACCOUNT("/account"),
     ACCOUNT_CHANGE_USERNAME("/account/username"),
     ACCOUNT_CHANGE_USERNAME_TAKEN("/account?taken"),
-    ACCOUNT_CHANGE_USERNAME_NO_MATCH("/account?err"),
+    ACCOUNT_CHANGE_USERNAME_NO_MATCH("/account?username"),
     ACCOUNT_CHANGE_PASSWORDS_NO_MATCH("/account?password");
 
 

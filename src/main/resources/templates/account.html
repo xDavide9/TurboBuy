@@ -49,9 +49,15 @@
             <form action="/account/username" method="post">
                 <div class="alert alert-danger" role="alert" th:if="${param.taken}">
                     Username Already Taken
+                    <script>
+                        document.getElementById("username-card").style.display = "block"
+                    </script>
                 </div>
-                <div class="alert alert-danger" role="alert" th:if="${param.err}">
+                <div class="alert alert-danger" role="alert" th:if="${param.username}">
                     Incorrect Username
+                    <script>
+                        document.getElementById("username-card").style.display = "block"
+                    </script>
                 </div>
                 <p>
                     <label class="sr-only mb-1" for="current-username">Current Username</label>
@@ -78,6 +84,9 @@
             <form action="/account/password" method="post">
                 <div class="alert alert-danger" role="alert" th:if="${param.password}">
                     Incorrect Password
+                    <script>
+                        document.getElementById("password-card").style.display = "block"
+                    </script>
                 </div>
                 <p>
                     <label class="sr-only mb-1" for="current-password">Current Password</label>
