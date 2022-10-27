@@ -30,6 +30,14 @@ public class ExceptionHandlers {
         return new RedirectView(redirect);
     }
 
+    @ExceptionHandler(PasswordsDoNotMatchException.class)
+    public RedirectView handlePasswordsDoNotMatchException(PasswordsDoNotMatchException e) {
+        log.error("PassWordsDoNotMatchException", e);
+        String redirect = ACCOUNT_CHANGE_PASSWORDS_NO_MATCH.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
+    }
+
     @ExceptionHandler(SaleAlreadyPresentException.class)
     public RedirectView handleSaleAlreadyPresentException(SaleAlreadyPresentException e) {
         log.error("SaleAlreadyPresentException", e);

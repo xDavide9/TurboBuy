@@ -1,6 +1,7 @@
 package com.xdavide9.turbobuy.account;
 
 import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.exception.PasswordsDoNotMatchException;
 import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
 import com.xdavide9.turbobuy.exception.UsernamesDoNotMatchException;
 import com.xdavide9.turbobuy.user.AppUser;
@@ -59,9 +60,13 @@ public class AccountService {
     public RedirectView changePassword(PasswordChange passwordChange, Authentication authentication, HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
-        // todo add validation
+        String inputCurrentPassword = encoder.encode(passwordChange.currentPassword());
+        String actualCurrentPassword = appUser.getPassword();
+        if (!(inputCurrentPassword.equals(actualCurrentPassword)))
+            throw new PasswordsDoNotMatchException("Input password does not match actual password");
         appUser.setPassword(encoder.encode(passwordChange.newPassword()));
         appUserRepository.save(appUser);
+        // logging user out to apply changes
         try {
             request.logout();
         } catch (ServletException e) {
