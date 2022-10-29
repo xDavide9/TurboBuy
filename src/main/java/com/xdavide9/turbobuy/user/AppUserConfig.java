@@ -37,11 +37,13 @@ public class AppUserConfig {
             Set<Sale> sales = user.getSales();
             sales.add(new Sale(
                     "Macbook air m1",
-                    "Beautiful"
+                    "Beautiful",
+                    "user"
             ));
             sales.add(new Sale(
                     "Used Toaster",
-                    "bruh"
+                    "bruh",
+                    "user"
             ));
             Set<UsernameChange> usernameChanges = user.getUsernameChanges();
             usernameChanges.add(new UsernameChange(
@@ -56,7 +58,8 @@ public class AppUserConfig {
             Set<Sale> sales2 = user2.getSales();
             sales2.add(new Sale(
                     "Tesla Model X",
-                    "Awesome"
+                    "Awesome",
+                    "user2"
             ));
 
             repository.save(admin);

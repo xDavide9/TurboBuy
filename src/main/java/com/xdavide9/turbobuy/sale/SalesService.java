@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Set;
 
 import static com.xdavide9.turbobuy.security.Redirect.HOME;
@@ -29,11 +30,12 @@ public class SalesService {
         AppUser appUser = userDetails.getAppUser();
         if (saleRepository.findByTitle(sale.getTitle()).isPresent())
             throw new SaleAlreadyPresentException("Sale '" + sale.getTitle() + "' already present");
+        sale.setAppUserName(appUser.getUsername());
         Set<Sale> sales = appUser.getSales();
         sales.add(sale);
         appUser.setSales(sales);
         appUserRepository.save(appUser);
-        log.info("User '" + appUser + "' Successfully posted sale '" + sale + "'");
+        log.info("User '" + appUser.getUsername() + "' Successfully posted sale '" + sale + "'");
         // logging user out to apply changes
         try {
             request.logout();
@@ -41,5 +43,9 @@ public class SalesService {
             throw new RuntimeException(e);
         }
         return new RedirectView(HOME.getUrl());
+    }
+
+    public List<Sale> getSales() {
+        return saleRepository.findAll();
     }
 }

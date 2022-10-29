@@ -27,6 +27,7 @@ public class Sale {
     private Integer saleId;
     @Column(name = "app_user_id")
     private Integer appUserId;
+    private String appUserName;
     @Column(unique = true)
     private String title;
     private String description;
@@ -34,6 +35,12 @@ public class Sale {
     public Sale(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public Sale(String title, String description, String appUserName) {
+        this.title = title;
+        this.description = description;
+        this.appUserName = appUserName;
     }
 
     @Override

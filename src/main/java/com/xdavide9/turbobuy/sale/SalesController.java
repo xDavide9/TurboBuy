@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/sales")
@@ -18,5 +19,9 @@ public class SalesController {
     @PostMapping(consumes = "application/x-www-form-urlencoded")
     public RedirectView addNewSale(Sale sale, Authentication authentication, HttpServletRequest request) {
         return salesService.addNewSale(sale, authentication, request);
+    }
+
+    public List<Sale> getSales() {
+        return salesService.getSales();
     }
 }
