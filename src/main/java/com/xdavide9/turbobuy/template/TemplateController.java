@@ -44,9 +44,4 @@ public class TemplateController {
     public String getContactView() {
         return "contact";
     }
-
-    @GetMapping(path = "about")
-    public String getAboutView() {
-        return "about";
-    }
 }
