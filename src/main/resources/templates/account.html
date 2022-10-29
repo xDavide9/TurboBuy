@@ -16,29 +16,31 @@
 <body>
 <div th:insert="fragments/header.html :: header"></div>
 <div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start">
-    <div class="card">
+    <div class="card account-card">
         <div class="card-header">
             My Account
         </div>
-        <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">
-                Username
-                <a href="javascript:void(0)" id="open-username-card">
-                    <img alt="edit" src="/images/pencil-fill.svg">
-                </a>
-            </h6>
-            <p class="card-text" th:text="${currentUser.getUsername()}"></p>
-            <h6 class="card-subtitle mb-2 text-muted">
-                Password
-                <a href="javascript:void(0)" id="open-password-card">
-                    <img alt="edit" src="/images/pencil-fill.svg">
-                </a>
-            </h6>
-            <p class="card-text">********</p>
-            <a class="btn btn-dark" href="#">My Sales</a>
+        <div class="d-flex align-items-center h-100">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Username
+                    <a href="javascript:void(0)" id="open-username-card">
+                        <img alt="edit" src="/images/pencil-fill.svg">
+                    </a>
+                </h6>
+                <p class="card-text" th:text="${currentUser.getUsername()}"></p>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Password
+                    <a href="javascript:void(0)" id="open-password-card">
+                        <img alt="edit" src="/images/pencil-fill.svg">
+                    </a>
+                </h6>
+                <p class="card-text">********</p>
+                <a class="btn btn-dark" href="#">My Sales</a>
+            </div>
         </div>
     </div>
-    <div class="card" id="username-card">
+    <div class="card account-card" id="username-card">
         <div class="card-header position-relative">
             Change Username
             <a href="javascript:void(0)" id="close-username-card">
@@ -73,7 +75,7 @@
             </form>
         </div>
     </div>
-    <div class="card" id="password-card">
+    <div class="card account-card" id="password-card">
         <div class="card-header position-relative">
             Change Password
             <a href="javascript:void(0)" id="close-password-card">
