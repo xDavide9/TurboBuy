@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class SaleService {
+public class SaleApiService {
     private final SaleRepository repository;
 
     public List<Sale> getSales() {

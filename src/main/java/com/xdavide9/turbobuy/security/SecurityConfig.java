@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.auth.AppUserDetailsService;
+import com.xdavide9.turbobuy.account.auth.AppUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

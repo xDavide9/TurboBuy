@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.registration;
+package com.xdavide9.turbobuy.account.registration;
 
 import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
 import com.xdavide9.turbobuy.user.AppUser;

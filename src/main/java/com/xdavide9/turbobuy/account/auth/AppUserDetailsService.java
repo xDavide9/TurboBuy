@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.auth;
+package com.xdavide9.turbobuy.account.auth;
 
 import com.xdavide9.turbobuy.exception.UserNotFoundException;
 import com.xdavide9.turbobuy.user.AppUser;

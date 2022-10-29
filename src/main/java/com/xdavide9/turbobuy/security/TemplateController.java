@@ -1,6 +1,6 @@
-package com.xdavide9.turbobuy.template;
+package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

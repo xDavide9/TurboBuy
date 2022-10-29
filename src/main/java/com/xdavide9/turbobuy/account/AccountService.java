@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.account;
 
-import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.exception.PasswordsDoNotMatchException;
 import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
 import com.xdavide9.turbobuy.exception.UsernamesDoNotMatchException;

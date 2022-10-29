@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.user.AppUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

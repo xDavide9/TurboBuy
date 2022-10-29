@@ -11,21 +11,21 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/sales")
 @AllArgsConstructor
-public class SaleController {
-    private final SaleService saleService;
+public class SaleApiController {
+    private final SaleApiService saleApiService;
 
     @GetMapping
     public List<Sale> getSales() {
-        return saleService.getSales();
+        return saleApiService.getSales();
     }
 
     @GetMapping("/id/{saleId}")
     public Sale getSaleById(@PathVariable("saleId") Integer saleId) {
-        return saleService.getSaleById(saleId);
+        return saleApiService.getSaleById(saleId);
     }
 
     @GetMapping("/user/id/{appUserId}")
     public List<Sale> getSalesByAppUserId(@PathVariable("appUserId") Integer appUserId) {
-        return saleService.getSalesByAppUserId(appUserId);
+        return saleApiService.getSalesByAppUserId(appUserId);
     }
 }

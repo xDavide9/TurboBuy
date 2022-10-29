@@ -1,9 +1,7 @@
-package com.xdavide9.turbobuy.sales;
+package com.xdavide9.turbobuy.sale;
 
-import com.xdavide9.turbobuy.auth.AppUserDetails;
+import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.exception.SaleAlreadyPresentException;
-import com.xdavide9.turbobuy.sale.Sale;
-import com.xdavide9.turbobuy.sale.SaleRepository;
 import com.xdavide9.turbobuy.user.AppUser;
 import com.xdavide9.turbobuy.user.AppUserRepository;
 import lombok.AllArgsConstructor;
