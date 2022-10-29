@@ -16,8 +16,8 @@
 </head>
 <body class="p-0">
 <div th:insert="fragments/header.html :: header"></div>
-<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start">
-    <div class="card" id="sales-card">
+<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
+    <div class="card sale-card">
         <div class="card-header position-relative">
             New Sale
         </div>
@@ -38,6 +38,19 @@
                 </p>
                 <button class="btn btn-dark btn-block" type="submit">Submit</button>
             </form>
+        </div>
+    </div>
+    <div th:each="sale: ${sales}">
+        <div class="card sale-card" id="sale-iterable-card">
+            <div class="card-header">On Sale</div>
+            <div class="card-body">
+                <div class="text-muted mb-3">
+                    Posted by <a class="link-dark" href="#" th:text="${sale.getAppUserName()}">Username</a>
+                </div>
+                <div class="h5 mb-1" th:text="${sale.getTitle()}">Title</div>
+                <div class="mb-3" th:text="${sale.getDescription()}">Description</div>
+                <button class="btn btn-dark btn-block float-end" type="button">Buy Now</button>
+            </div>
         </div>
     </div>
 </div>
