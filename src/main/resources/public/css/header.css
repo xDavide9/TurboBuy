@@ -2,16 +2,6 @@ a.desktop {
     display: none;
 }
 
-/*sm*/
-@media (min-width: 576px) {
-
-}
-
-/*md*/
-@media (min-width: 768px) {
-
-}
-
 /*lg*/
 @media (min-width: 992px) {
     li.mobile {
@@ -21,14 +11,4 @@ a.desktop {
     a.desktop {
         display: block;
     }
-}
-
-/*xl*/
-@media (min-width: 1200px) {
-
-}
-
-/*xxl*/
-@media (min-width: 1400px) {
-
 }
