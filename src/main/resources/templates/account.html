@@ -29,24 +29,22 @@
         <div class="card-header">
             My Account
         </div>
-        <div class="d-flex align-items-center h-100">
-            <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">
-                    Username
-                    <a href="javascript:void(0)" id="open-username-card">
-                        <img alt="edit" src="/images/pencil-fill.svg">
-                    </a>
-                </h6>
-                <p class="card-text" th:text="${currentUser.getUsername()}"></p>
-                <h6 class="card-subtitle mb-2 text-muted">
-                    Password
-                    <a href="javascript:void(0)" id="open-password-card">
-                        <img alt="edit" src="/images/pencil-fill.svg">
-                    </a>
-                </h6>
-                <p class="card-text">********</p>
-                <a class="btn btn-dark" href="#">My Sales</a>
-            </div>
+        <div class="card-body">
+            <h6 class="card-subtitle my-2 text-muted">
+                Username
+                <a href="javascript:void(0)" id="open-username-card">
+                    <img alt="edit" src="/images/pencil-fill.svg">
+                </a>
+            </h6>
+            <p class="card-text" th:text="${currentUser.getUsername()}"></p>
+            <h6 class="card-subtitle mb-2 text-muted">
+                Password
+                <a href="javascript:void(0)" id="open-password-card">
+                    <img alt="edit" src="/images/pencil-fill.svg">
+                </a>
+            </h6>
+            <p class="card-text">********</p>
+            <a class="btn btn-dark" href="#">My Sales</a>
         </div>
     </div>
     <div class="card my-card" id="username-card">
@@ -80,7 +78,7 @@
                     <input autofocus class="form-control" id="new-username" name="newUsername"
                            placeholder="New Username" required type="text">
                 </p>
-                <button class="btn btn-dark btn-block" type="submit">Submit</button>
+                <button class="btn btn-dark" type="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -109,7 +107,7 @@
                     <input autofocus class="form-control" id="new-password" name="newPassword"
                            placeholder="New Password" required type="password">
                 </p>
-                <button class="btn btn-dark btn-block" type="submit">Submit</button>
+                <button class="btn btn-dark" type="submit">Submit</button>
             </form>
         </div>
     </div>

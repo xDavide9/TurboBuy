@@ -36,7 +36,7 @@
                     <input autofocus class="form-control" id="description" name="description"
                            placeholder="Description" required type="text">
                 </p>
-                <button class="btn btn-dark btn-block" type="submit">Submit</button>
+                <button class="btn btn-dark" type="submit">Submit</button>
             </form>
         </div>
     </div>
@@ -44,12 +44,12 @@
         <div class="card my-card" id="sale-iterable-card">
             <div class="card-header">On Sale</div>
             <div class="card-body">
-                <div class="text-muted mb-3">
+                <div class="text-muted mb-2">
                     Posted by <a class="link-dark" href="#" th:text="${sale.getAppUserName()}">Username</a>
                 </div>
-                <div class="h5 mb-1" th:text="${sale.getTitle()}">Title</div>
+                <div class="h5" th:text="${sale.getTitle()}">Title</div>
                 <div class="mb-3" th:text="${sale.getDescription()}">Description</div>
-                <button class="btn btn-dark btn-block float-end" type="button">Buy Now</button>
+                <button class="btn btn-outline-dark" type="button">Buy Now</button>
             </div>
         </div>
     </div>
