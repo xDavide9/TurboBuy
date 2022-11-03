@@ -11,6 +11,7 @@ public class TurbobuyApplication {
     // todo create my sales section, home section, contact section
     // todo add image support to the application
     // todo make sale cards show an image uploaded by the user and when hovered show details
+    // todo make sale cards "closeable"; show a random limited number of results from db; add button to reload for new results
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
     }
