@@ -1,11 +1,11 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.user.api;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.xdavide9.turbobuy.user.AppUserPermission.*;
+import static com.xdavide9.turbobuy.user.api.AppUserPermission.*;
 
 public enum AppUserRole {
     USER(Set.of(SALES_READ, SALES_WRITE)),

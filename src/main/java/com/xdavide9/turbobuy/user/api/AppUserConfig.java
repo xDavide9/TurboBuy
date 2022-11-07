@@ -1,7 +1,7 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.user.api;
 
-import com.xdavide9.turbobuy.account.UsernameChange;
-import com.xdavide9.turbobuy.sale.Sale;
+import com.xdavide9.turbobuy.user.account.UsernameChange;
+import com.xdavide9.turbobuy.sale.api.Sale;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
 
-import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
+import static com.xdavide9.turbobuy.user.api.AppUserRole.ADMIN;
 
 
 @Configuration

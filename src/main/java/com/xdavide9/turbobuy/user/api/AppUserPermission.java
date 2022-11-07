@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.user.api;
 
 public enum AppUserPermission {
     SALES_READ("sales:read"),

@@ -1,7 +1,7 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.user.api;
 
 import com.xdavide9.turbobuy.exception.UserNotFoundException;
-import com.xdavide9.turbobuy.sale.Sale;
+import com.xdavide9.turbobuy.sale.api.Sale;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

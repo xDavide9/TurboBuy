@@ -1,8 +1,8 @@
-package com.xdavide9.turbobuy.account.registration;
+package com.xdavide9.turbobuy.user.account.registration;
 
 import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
-import com.xdavide9.turbobuy.user.AppUser;
-import com.xdavide9.turbobuy.user.AppUserRepository;
+import com.xdavide9.turbobuy.user.api.AppUser;
+import com.xdavide9.turbobuy.user.api.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,17 +22,17 @@ public class RegistrationService {
     private final AppUserRepository repository;
     private final PasswordEncoder encoder;
 
-    public RedirectView register(HttpServletRequest request, AppUser user) {
-        String username = user.getUsername();
+    public RedirectView register(HttpServletRequest request,
+                                 String username,
+                                 String password) {
         if (repository.findByUsername(username).isPresent())
             throw new UsernameAlreadyTakenException("Username '" + username + "' is taken.", true);
-        String decodedPassword = user.getPassword();
-        String encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+        String encodedPassword = encoder.encode(password);
+        AppUser user = new AppUser(username, encodedPassword);
         repository.save(user);
         log.info("Successfully registered user '{}'", username);
         try {
-            request.login(username, decodedPassword);
+            request.login(username, password);
         } catch (ServletException e) {
             log.error("Error while logging user '{}' in.", username);
             log.error(e.getMessage());

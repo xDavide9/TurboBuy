@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.account;
+package com.xdavide9.turbobuy.user.account;
 
 import lombok.*;
 

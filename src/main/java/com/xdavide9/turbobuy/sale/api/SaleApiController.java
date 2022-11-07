@@ -1,4 +1,4 @@
-package com.xdavide9.turbobuy.sale;
+package com.xdavide9.turbobuy.sale.api;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

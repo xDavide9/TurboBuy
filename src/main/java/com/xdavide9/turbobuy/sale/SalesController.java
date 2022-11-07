@@ -1,9 +1,11 @@
 package com.xdavide9.turbobuy.sale;
 
+import com.xdavide9.turbobuy.sale.api.Sale;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -16,9 +18,12 @@ import java.util.List;
 public class SalesController {
     private final SalesService salesService;
 
-    @PostMapping(consumes = "application/x-www-form-urlencoded")
-    public RedirectView addNewSale(Sale sale, Authentication authentication, HttpServletRequest request) {
-        return salesService.addNewSale(sale, authentication, request);
+    @PostMapping
+    public RedirectView addNewSale(@RequestParam("title") String title,
+                                   @RequestParam("description") String description,
+                                   Authentication authentication,
+                                   HttpServletRequest request) {
+        return salesService.addNewSale(title, description, authentication, request);
     }
 
     public List<Sale> getSales() {

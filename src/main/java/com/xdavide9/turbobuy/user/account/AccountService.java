@@ -1,11 +1,11 @@
-package com.xdavide9.turbobuy.account;
+package com.xdavide9.turbobuy.user.account;
 
-import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.exception.PasswordsDoNotMatchException;
 import com.xdavide9.turbobuy.exception.UsernameAlreadyTakenException;
 import com.xdavide9.turbobuy.exception.UsernamesDoNotMatchException;
-import com.xdavide9.turbobuy.user.AppUser;
-import com.xdavide9.turbobuy.user.AppUserRepository;
+import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
+import com.xdavide9.turbobuy.user.api.AppUser;
+import com.xdavide9.turbobuy.user.api.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -27,25 +27,27 @@ public class AccountService {
     private final AppUserRepository appUserRepository;
     private final PasswordEncoder encoder;
 
-    public RedirectView changeUsername(UsernameChange usernameChange, Authentication authentication, HttpServletRequest request) {
+    public RedirectView changeUsername(String currentUsername,
+                                       String newUsername,
+                                       Authentication authentication,
+                                       HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
-        String inputCurrentUsername = usernameChange.getCurrentUsername();
         String actualCurrentUsername = appUser.getUsername();
-        String newUsername = usernameChange.getNewUsername();
-        if (!(inputCurrentUsername.equals(actualCurrentUsername)))
+        if (!(currentUsername.equals(actualCurrentUsername)))
             throw new UsernamesDoNotMatchException(
-                    "input '" + inputCurrentUsername +
+                    "input '" + currentUsername +
                             "' does not match '" + actualCurrentUsername + "'");
         if (appUserRepository.findByUsername(newUsername).isPresent())
             throw new UsernameAlreadyTakenException("Username '" + newUsername + "' already present", false);
+        UsernameChange usernameChange = new UsernameChange(currentUsername, newUsername);
         Set<UsernameChange> usernameChanges = appUser.getUsernameChanges();
         usernameChanges.add(usernameChange);
         appUser.setUsernameChanges(usernameChanges);
         appUser.setUsername(newUsername);
         appUserRepository.save(appUser);
         log.info(
-                "User '" + inputCurrentUsername +
+                "User '" + currentUsername +
                         "' changed his username to '" + newUsername + "'"
         );
         // logging user out to apply changes
@@ -57,14 +59,16 @@ public class AccountService {
         return new RedirectView(HOME.getUrl());
     }
 
-    public RedirectView changePassword(PasswordChange passwordChange, Authentication authentication, HttpServletRequest request) {
+    public RedirectView changePassword(String currentPassword,
+                                       String newPassword,
+                                       Authentication authentication,
+                                       HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
-        String inputCurrentPassword = encoder.encode(passwordChange.currentPassword());
         String actualCurrentPassword = appUser.getPassword();
-        if (!(inputCurrentPassword.equals(actualCurrentPassword)))
+        if (!(encoder.matches(currentPassword, actualCurrentPassword)))
             throw new PasswordsDoNotMatchException("Input password does not match actual password");
-        appUser.setPassword(encoder.encode(passwordChange.newPassword()));
+        appUser.setPassword(encoder.encode(newPassword));
         appUserRepository.save(appUser);
         // logging user out to apply changes
         try {

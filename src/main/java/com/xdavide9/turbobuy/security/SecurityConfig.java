@@ -1,6 +1,6 @@
 package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.account.auth.AppUserDetailsService;
+import com.xdavide9.turbobuy.user.account.auth.AppUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static com.xdavide9.turbobuy.security.Redirect.*;
-import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
+import static com.xdavide9.turbobuy.user.api.AppUserRole.ADMIN;
 
 @Configuration
 @EnableWebSecurity

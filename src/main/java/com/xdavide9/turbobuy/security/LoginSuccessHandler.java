@@ -1,7 +1,7 @@
 package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.account.auth.AppUserDetails;
-import com.xdavide9.turbobuy.user.AppUser;
+import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
+import com.xdavide9.turbobuy.user.api.AppUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
@@ -13,8 +13,8 @@ import java.io.IOException;
 
 import static com.xdavide9.turbobuy.security.Redirect.HOME;
 import static com.xdavide9.turbobuy.security.Redirect.USER_API;
-import static com.xdavide9.turbobuy.user.AppUserRole.ADMIN;
-import static com.xdavide9.turbobuy.user.AppUserRole.USER;
+import static com.xdavide9.turbobuy.user.api.AppUserRole.ADMIN;
+import static com.xdavide9.turbobuy.user.api.AppUserRole.USER;
 
 @Component
 @Slf4j

@@ -1,9 +1,11 @@
 package com.xdavide9.turbobuy.sale;
 
-import com.xdavide9.turbobuy.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.exception.SaleAlreadyPresentException;
-import com.xdavide9.turbobuy.user.AppUser;
-import com.xdavide9.turbobuy.user.AppUserRepository;
+import com.xdavide9.turbobuy.sale.api.Sale;
+import com.xdavide9.turbobuy.sale.api.SaleRepository;
+import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
+import com.xdavide9.turbobuy.user.api.AppUser;
+import com.xdavide9.turbobuy.user.api.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -25,12 +27,15 @@ public class SalesService {
     private final AppUserRepository appUserRepository;
     private final SaleRepository saleRepository;
 
-    public RedirectView addNewSale(Sale sale, Authentication authentication, HttpServletRequest request) {
+    public RedirectView addNewSale(String title,
+                                   String description,
+                                   Authentication authentication,
+                                   HttpServletRequest request) {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser appUser = userDetails.getAppUser();
-        if (saleRepository.findByTitle(sale.getTitle()).isPresent())
-            throw new SaleAlreadyPresentException("Sale '" + sale.getTitle() + "' already present");
-        sale.setAppUserName(appUser.getUsername());
+        if (saleRepository.findByTitle(title).isPresent())
+            throw new SaleAlreadyPresentException("Sale '" + title + "' already present");
+        Sale sale = new Sale(title, description, appUser.getUsername());
         Set<Sale> sales = appUser.getSales();
         sales.add(sale);
         appUser.setSales(sales);

@@ -1,8 +1,8 @@
-package com.xdavide9.turbobuy.account.auth;
+package com.xdavide9.turbobuy.user.account.auth;
 
 import com.xdavide9.turbobuy.exception.UserNotFoundException;
-import com.xdavide9.turbobuy.user.AppUser;
-import com.xdavide9.turbobuy.user.AppUserRepository;
+import com.xdavide9.turbobuy.user.api.AppUser;
+import com.xdavide9.turbobuy.user.api.AppUserRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.query.Param;

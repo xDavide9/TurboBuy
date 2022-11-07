@@ -1,7 +1,7 @@
-package com.xdavide9.turbobuy.user;
+package com.xdavide9.turbobuy.user.api;
 
-import com.xdavide9.turbobuy.account.UsernameChange;
-import com.xdavide9.turbobuy.sale.Sale;
+import com.xdavide9.turbobuy.user.account.UsernameChange;
+import com.xdavide9.turbobuy.sale.api.Sale;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.xdavide9.turbobuy.user.AppUserRole.USER;
+import static com.xdavide9.turbobuy.user.api.AppUserRole.USER;
 
 @Entity(name = "AppUser")
 @Table(name = "app_user")
