@@ -42,8 +42,13 @@
             </p>
             <p>
                 <label class="sr-only mb-1" for="description">Description</label>
-                <input autofocus class="form-control" id="description" name="description"
+                <input class="form-control" id="description" name="description"
                        placeholder="Description" required type="text">
+            </p>
+            <p>
+                <label class="sr-only mb-1" for="image">Image</label>
+                <input accept="image/*" class="form-control" id="image"
+                       name="image" placeholder="Image" required type="file">
             </p>
             <button class="btn btn-dark" type="submit">Submit</button>
         </form>
