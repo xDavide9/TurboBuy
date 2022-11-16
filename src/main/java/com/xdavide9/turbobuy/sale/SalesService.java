@@ -50,7 +50,13 @@ public class SalesService {
         return new RedirectView(HOME.getUrl());
     }
 
+    // todo change this so that it's random
     public List<Sale> getSales() {
         return saleRepository.findAll();
+    }
+
+    public List<Sale> getSalesByAppUserId(Integer appUserId) {
+        return saleRepository.findByAppUserId(appUserId)
+                .orElseThrow(() -> new IllegalStateException("Error while fetching data"));
     }
 }

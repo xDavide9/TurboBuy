@@ -21,11 +21,15 @@
         #password-card {
             display: none;
         }
+
+        #sale-iterable-card {
+            display: none;
+        }
     </style>
 </head>
 <body>
 <div th:insert="fragments/header.html :: header"></div>
-<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start">
+<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
     <div class="card my-card">
         <div class="card-header">
             My Account
@@ -45,7 +49,7 @@
                 </a>
             </h6>
             <p class="card-text">********</p>
-            <a class="btn btn-dark" href="#">My Sales</a>
+            <a class="btn btn-dark" href="javascript:void(0)" id="toggle-sale-cards">My Sales</a>
         </div>
     </div>
     <div class="card my-card" id="username-card">
@@ -110,6 +114,20 @@
                 </p>
                 <button class="btn btn-dark" type="submit">Submit</button>
             </form>
+        </div>
+    </div>
+    <!--    make this toggled by mysales button in account card-->
+    <div th:each="sale: ${mysales}">
+        <div class="card my-card" id="sale-card">
+            <div class="card-header">On Sale</div>
+            <div class="card-body">
+                <div class="text-muted mb-2">
+                    Posted by <a class="link-dark" href="#" th:text="${sale.getAppUserName()}">Username</a>
+                </div>
+                <div class="h5" th:text="${sale.getTitle()}">Title</div>
+                <div class="mb-3" th:text="${sale.getDescription()}">Description</div>
+                <button class="btn btn-outline-dark" type="button">Delete</button>
+            </div>
         </div>
     </div>
 </div>

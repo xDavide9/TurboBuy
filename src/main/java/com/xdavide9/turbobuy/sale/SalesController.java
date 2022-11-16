@@ -29,4 +29,8 @@ public class SalesController {
     public List<Sale> getSales() {
         return salesService.getSales();
     }
+
+    public List<Sale> getSalesByAppUserId(Integer appUserId) {
+        return salesService.getSalesByAppUserId(appUserId);
+    }
 }

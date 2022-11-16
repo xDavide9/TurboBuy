@@ -1,7 +1,8 @@
 package com.xdavide9.turbobuy.security;
 
-import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
 import com.xdavide9.turbobuy.sale.SalesController;
+import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
+import com.xdavide9.turbobuy.user.api.AppUser;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,15 @@ public class TemplateController {
 
     @GetMapping(path = "account")
     public String getAccountView(Model model, Authentication authentication) {
+        AppUser currentUser = ((AppUserDetails) authentication.getPrincipal()).getAppUser();
         model.addAttribute(
                 "currentUser",
-                ((AppUserDetails) authentication.getPrincipal()).getAppUser()
+                currentUser
+        );
+        Integer currentUserId = currentUser.getAppUserId();
+        model.addAttribute(
+                "mysales",
+                salesController.getSalesByAppUserId(currentUserId)
         );
         return "account";
     }
