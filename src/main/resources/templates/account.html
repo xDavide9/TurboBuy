@@ -21,14 +21,22 @@
         #password-card {
             display: none;
         }
-
-        #sale-iterable-card {
-            display: none;
-        }
     </style>
 </head>
 <body>
 <div th:insert="fragments/header.html :: header"></div>
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card">
+        <div class="card-body">
+            <div class="py-2">
+                Your account information along with sales you posted will appear in this page
+            </div>
+            <div class="text-center py-2">
+                <a class="btn btn-dark btn-lg" href="/sales" role="button">Start Selling Now</a>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
     <div class="card my-card">
         <div class="card-header">
@@ -49,7 +57,7 @@
                 </a>
             </h6>
             <p class="card-text">********</p>
-            <a class="btn btn-dark" href="javascript:void(0)" id="toggle-sale-cards">My Sales</a>
+            <p>Click on the pencil icon to change either username or password</p>
         </div>
     </div>
     <div class="card my-card" id="username-card">
@@ -119,7 +127,7 @@
     <!--    make this toggled by mysales button in account card-->
     <div th:each="sale: ${mysales}">
         <div class="card my-card" id="sale-card">
-            <div class="card-header">On Sale</div>
+            <div class="card-header">My Sale</div>
             <div class="card-body">
                 <div class="text-muted mb-2">
                     Posted by <a class="link-dark" href="#" th:text="${sale.getAppUserName()}">Username</a>

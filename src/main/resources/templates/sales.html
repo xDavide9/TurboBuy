@@ -17,11 +17,20 @@
 <body class="p-0">
 <div th:insert="fragments/header.html :: header"></div>
 <div class="container d-flex justify-content-center mt-5">
-    <button aria-controls="new-sale" class="btn btn-dark btn-lg" data-bs-target="#new-sale"
-            data-bs-toggle="offcanvas"
-            type="button">
-        Sell Now
-    </button>
+    <div class="card">
+        <div class="card-body">
+            <div class="py-2">
+                Browse available sales or post a new one
+            </div>
+            <div class="text-center py-2">
+                <button aria-controls="new-sale" class="btn btn-dark btn-lg" data-bs-target="#new-sale"
+                        data-bs-toggle="offcanvas"
+                        type="button">
+                    Sell Now
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 <div aria-labelledby="new-sale-label" class="offcanvas offcanvas-start" data-bs-backdrop="false"
      data-bs-scroll="true"
