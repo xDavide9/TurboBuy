@@ -6,13 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TurbobuyApplication {
 
-    // todo implement csrf
-    // todo create footer
-    // todo create my sales section, home section, contact section
-    // todo add image support to the application
-    // todo make sale cards show an image uploaded by the user and when hovered show details
-    // todo make sale cards "closeable"; show a random limited number of results from db; add button to reload for new results
-    // todo work on theming
+    // todo 1) create footer
+    // todo 2) create contact section
+    // todo 3) refactor forms to use thymeleaf features
+    // todo 4) add image support to the application
+    // todo 5) deploy
+
     public static void main(String[] args) {
         SpringApplication.run(TurbobuyApplication.class, args);
     }

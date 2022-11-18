@@ -1,0 +1,52 @@
+body {
+    background-color: #eee;
+}
+
+.form-control:focus {
+    border-color: var(--bs-dark);
+    box-shadow: 0 0 0 0.2rem rgba(33, 37, 41, 0.25);
+}
+
+.my-card {
+    width: 300px;
+    height: 280px;
+}
+
+a.desktop {
+    display: none;
+}
+
+#username-card {
+    display: none;
+}
+
+#password-card {
+    display: none;
+}
+
+/*sm*/
+@media (min-width: 576px) {
+}
+
+/*md*/
+@media (min-width: 768px) {
+}
+
+/*lg*/
+@media (min-width: 992px) {
+    li.mobile {
+        display: none;
+    }
+
+    a.desktop {
+        display: block;
+    }
+}
+
+/*xl*/
+@media (min-width: 1200px) {
+}
+
+/*xxl*/
+@media (min-width: 1400px) {
+}

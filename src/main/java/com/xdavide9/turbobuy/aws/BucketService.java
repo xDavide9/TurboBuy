@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 
 @Service
@@ -31,10 +30,6 @@ public class BucketService {
             } catch (Exception e) {
                 log.error("Bucket name taken", e);
             }
-            uploadSalesImage(new FileInputStream("/Users/david/IdeaProjects/TurboBuy/src/main/resources/public/images/account.png"),
-                    12, "png");
-            uploadProfilePicture(new FileInputStream("/Users/david/IdeaProjects/TurboBuy/src/main/resources/public/images/account.png"),
-                    14, "png");
         };
     }
 

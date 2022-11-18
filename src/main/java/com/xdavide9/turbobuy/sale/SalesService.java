@@ -1,6 +1,7 @@
 package com.xdavide9.turbobuy.sale;
 
 import com.xdavide9.turbobuy.exception.SaleAlreadyPresentException;
+import com.xdavide9.turbobuy.exception.SaleNotFoundException;
 import com.xdavide9.turbobuy.sale.api.Sale;
 import com.xdavide9.turbobuy.sale.api.SaleRepository;
 import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
@@ -41,7 +42,6 @@ public class SalesService {
         appUser.setSales(sales);
         appUserRepository.save(appUser);
         log.info("User '" + appUser.getUsername() + "' Successfully posted sale '" + sale + "'");
-        // logging user out to apply changes
         try {
             request.logout();
         } catch (ServletException e) {
@@ -50,13 +50,13 @@ public class SalesService {
         return new RedirectView(HOME.getUrl());
     }
 
-    // todo change this so that it's random
+    // todo change this so that it's a random fixed number of results
     public List<Sale> getSales() {
         return saleRepository.findAll();
     }
 
     public List<Sale> getSalesByAppUserId(Integer appUserId) {
         return saleRepository.findByAppUserId(appUserId)
-                .orElseThrow(() -> new IllegalStateException("Error while fetching data"));
+                .orElseThrow(() -> new SaleNotFoundException("Error while fetching data"));
     }
 }
