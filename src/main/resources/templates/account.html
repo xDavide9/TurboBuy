@@ -112,7 +112,6 @@
             </form>
         </div>
     </div>
-    <!--    make this toggled by mysales button in account card-->
     <div th:each="sale: ${mysales}">
         <div class="card my-card" id="sale-card">
             <div class="card-header">My Sale</div>
@@ -127,6 +126,7 @@
         </div>
     </div>
 </div>
+<div th:insert="fragments/footer.html :: footer"></div>
 <script src="/js/account.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
