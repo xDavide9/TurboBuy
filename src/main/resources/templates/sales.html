@@ -13,22 +13,6 @@
 </head>
 <body class="p-0">
 <div th:insert="fragments/header.html :: header"></div>
-<div class="container d-flex justify-content-center mt-5">
-    <div class="card">
-        <div class="card-body">
-            <div class="py-2">
-                Browse available sales or post a new one
-            </div>
-            <div class="text-center py-2">
-                <button aria-controls="new-sale" class="btn btn-dark btn-lg" data-bs-target="#new-sale"
-                        data-bs-toggle="offcanvas"
-                        type="button">
-                    Sell Now
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
 <div aria-labelledby="new-sale-label" class="offcanvas offcanvas-start" data-bs-backdrop="false"
      data-bs-scroll="true"
      id="new-sale" tabindex="-1">
@@ -54,13 +38,32 @@
             <p>
                 <label class="sr-only mb-1" for="image">Image</label>
                 <input accept="image/*" class="form-control" id="image"
-                       name="image" placeholder="Image" required type="file">
+                       name="image" placeholder="Image" type="file">
             </p>
             <button class="btn btn-dark" type="submit">Submit</button>
         </form>
     </div>
 </div>
-<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
+<div class="container d-flex mt-5 position-relative">
+    <div>
+        <div class="h3">
+            Available Deals
+        </div>
+        <div class="mt-2 lead">
+            <a class="link-dark" href="/sales">
+                Refresh
+            </a>
+        </div>
+    </div>
+    <div class="text-center position-absolute end-0">
+        <button aria-controls="new-sale" class="btn btn-dark btn-lg" data-bs-target="#new-sale"
+                data-bs-toggle="offcanvas"
+                type="button">
+            Sell Now
+        </button>
+    </div>
+</div>
+<div class="mt-5 container d-flex justify-content-start align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
     <div th:each="sale: ${sales}">
         <div class="card my-card" id="sale-iterable-card">
             <div class="card-header">On Sale</div>
@@ -70,7 +73,7 @@
                 </div>
                 <div class="h5" th:text="${sale.getTitle()}">Title</div>
                 <div class="mb-3" th:text="${sale.getDescription()}">Description</div>
-                <button class="btn btn-outline-dark" type="button">Buy Now</button>
+                <button class="btn btn-outline-dark" type="button">Contact</button>
             </div>
         </div>
     </div>
