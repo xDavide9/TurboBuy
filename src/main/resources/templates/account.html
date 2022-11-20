@@ -12,20 +12,22 @@
     <title>My Account</title>
 </head>
 <body>
+
 <div th:insert="fragments/header.html :: header"></div>
-<div class="container d-flex justify-content-center mt-5">
-    <div class="card">
-        <div class="card-body">
-            <div class="py-2">
-                Your account information along with sales you posted will appear in this page
-            </div>
-            <div class="text-center py-2">
-                <a class="btn btn-dark btn-lg" href="/sales" role="button">Start Selling Now</a>
-            </div>
+<div class="container d-flex mt-5 position-relative">
+    <div>
+        <div class="h3">
+            Account Information
+        </div>
+        <div class="mt-2 lead">
+            Change Username or Password
         </div>
     </div>
+    <div class="text-center position-absolute end-0">
+        <a class="btn btn-dark btn-lg" href="/sales" role="button">Start Selling Now</a>
+    </div>
 </div>
-<div class="mt-5 container d-flex justify-content-center align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
+<div class="mt-5 container d-flex justify-content-start align-items-center flex-column flex-lg-row gap-5 align-self-start flex-wrap">
     <div class="card my-card">
         <div class="card-header">
             My Account
