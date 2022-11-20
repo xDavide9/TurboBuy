@@ -24,6 +24,12 @@ a.desktop {
     display: none;
 }
 
+@media (orientation: portrait) {
+    .text-center-portrait {
+        text-align: center;
+    }
+}
+
 /*sm*/
 @media (min-width: 576px) {
 }
@@ -40,6 +46,11 @@ a.desktop {
 
     a.desktop {
         display: block;
+    }
+
+    .position-absolute-end-0-lg {
+        position: absolute;
+        right: 0;
     }
 }
 
