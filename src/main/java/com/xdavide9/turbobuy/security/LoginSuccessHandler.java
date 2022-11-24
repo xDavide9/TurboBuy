@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.xdavide9.turbobuy.security.Redirect.HOME;
+import static com.xdavide9.turbobuy.security.Redirect.SALES;
 import static com.xdavide9.turbobuy.security.Redirect.USER_API;
 import static com.xdavide9.turbobuy.user.api.AppUserRole.ADMIN;
 import static com.xdavide9.turbobuy.user.api.AppUserRole.USER;
@@ -28,7 +28,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         AppUser appUser = userDetails.getAppUser();
         String redirect = request.getContextPath();
         if (appUser.getRole().equals(USER)) {
-            redirect = HOME.getUrl();
+            redirect = SALES.getUrl();
         } else if (appUser.getRole().equals(ADMIN)) {
             redirect = USER_API.getUrl();
         }
