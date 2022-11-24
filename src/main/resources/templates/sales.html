@@ -21,19 +21,19 @@
         <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
     </div>
     <div class="offcanvas-body">
-        <form action="/sales" method="post">
+        <form action="#" method="post" th:action="@{/sales}" th:object="${postedSale}">
             <div class="alert alert-danger" role="alert" th:if="${param.error}">
                 Title Already Exists
             </div>
             <p>
                 <label class="sr-only mb-1" for="title">Title</label>
-                <input autofocus class="form-control" id="title" name="title"
-                       placeholder="Title" required type="text">
+                <input autofocus class="form-control" id="title" placeholder="Title"
+                       required th:field="*{title}" type="text">
             </p>
             <p>
                 <label class="sr-only mb-1" for="description">Description</label>
-                <input class="form-control" id="description" name="description"
-                       placeholder="Description" required type="text">
+                <input class="form-control" id="description" placeholder="Description"
+                       required th:field="*{description}" type="text">
             </p>
             <p>
                 <label class="sr-only mb-1" for="image">Image</label>
