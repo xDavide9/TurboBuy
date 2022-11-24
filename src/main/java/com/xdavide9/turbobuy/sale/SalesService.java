@@ -53,7 +53,8 @@ public class SalesService {
 
     // todo change this so that it's a random fixed number of results
     public List<Sale> getSales() {
-        return saleRepository.findAll();
+        return saleRepository.findFifteenRandom().orElseThrow(
+                () -> new IllegalStateException("Something went wrong while fetching results"));
     }
 
     public List<Sale> getSalesByAppUserId(Integer appUserId) {

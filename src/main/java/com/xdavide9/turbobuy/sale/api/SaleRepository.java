@@ -15,5 +15,11 @@ public interface SaleRepository extends JpaRepository<Sale, Integer> {
     )
     Optional<List<Sale>> findByAppUserId(Integer appUserId);
 
+    @Query(
+            value = "SELECT * FROM sale ORDER BY random() LIMIT 15",
+            nativeQuery = true
+    )
+    Optional<List<Sale>> findFifteenRandom();
+
     Optional<Object> findByTitle(String title);
 }
