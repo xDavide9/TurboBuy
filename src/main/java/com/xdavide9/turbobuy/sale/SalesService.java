@@ -50,8 +50,7 @@ public class SalesService {
         }
         return new RedirectView(HOME.getUrl());
     }
-
-    // todo change this so that it's a random fixed number of results
+    
     public List<Sale> getSales() {
         return saleRepository.findFifteenRandom().orElseThrow(
                 () -> new IllegalStateException("Something went wrong while fetching results"));
@@ -68,10 +67,13 @@ public class SalesService {
             throw new SaleAlreadyPresentException("Sale '" + title + "' already present");
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser user = userDetails.getAppUser();
+        String username = user.getUsername();
+        sale.setAppUserName(username);
         Set<Sale> sales = user.getSales();
         sales.add(sale);
         user.setSales(sales);
+        saleRepository.save(sale);
         appUserRepository.save(user);
-        log.info("User '" + user.getUsername() + "' Successfully posted sale '" + sale + "'");
+        log.info("User '" + username + "' Successfully posted sale '" + sale + "'");
     }
 }

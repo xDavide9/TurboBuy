@@ -1,7 +1,7 @@
 package com.xdavide9.turbobuy.user.api;
 
-import com.xdavide9.turbobuy.user.account.UsernameChange;
 import com.xdavide9.turbobuy.sale.api.Sale;
+import com.xdavide9.turbobuy.user.account.UsernameChange;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +37,8 @@ public class AppUserConfig {
             Set<Sale> sales = user.getSales();
             sales.add(new Sale(
                     "Macbook air m1",
-                    "Beautiful",
+                    "Beautifulaaaaaaaaaaaadklfajsdklfjdalkfjlakfjalfjsklafjdkaslfjdksalfjsalfjsalfjdaslfjalfjladfk" +
+                            "asjkdfjklajfdlakjfaldfjad",
                     "user"
             ));
             sales.add(new Sale(
@@ -61,7 +62,6 @@ public class AppUserConfig {
                     "Awesome",
                     "user2"
             ));
-
             repository.save(admin);
             repository.save(user);
             repository.save(user2);

@@ -27,13 +27,14 @@
             </div>
             <p>
                 <label class="sr-only mb-1" for="title">Title</label>
-                <input autofocus class="form-control" id="title" placeholder="Title"
-                       required th:field="*{title}" type="text">
+                <input autofocus class="form-control" id="title" maxlength="30"
+                       minlength="10" placeholder="Title" required th:field="*{title}" type="text">
             </p>
             <p>
                 <label class="sr-only mb-1" for="description">Description</label>
-                <input class="form-control" id="description" placeholder="Description"
-                       required th:field="*{description}" type="text">
+                <textarea class="form-control" id="description" maxlength="100"
+                          minlength="80" placeholder="Description" required th:field="*{description}">
+                </textarea>
             </p>
             <p>
                 <label class="sr-only mb-1" for="image">Image</label>

@@ -24,6 +24,10 @@ a.desktop {
     display: none;
 }
 
+textarea {
+    height: 80px;
+}
+
 @media (orientation: portrait) {
     .text-center-portrait {
         text-align: center;
