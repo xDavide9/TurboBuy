@@ -49,7 +49,7 @@ public class TemplateController {
     public String addNewSaleV2(@ModelAttribute Sale sale, Model model, Authentication authentication) {
         model.addAttribute("postedSale", sale);
         salesController.addNewSaleV2(sale, authentication);
-        return "sales";
+        return "thanks";
     }
 
     @GetMapping

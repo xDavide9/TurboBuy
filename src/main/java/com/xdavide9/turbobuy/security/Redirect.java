@@ -18,7 +18,8 @@ public enum Redirect {
     ACCOUNT_CHANGE_USERNAME("/account/username"),
     ACCOUNT_CHANGE_USERNAME_TAKEN("/account?taken"),
     ACCOUNT_CHANGE_USERNAME_NO_MATCH("/account?username"),
-    ACCOUNT_CHANGE_PASSWORDS_NO_MATCH("/account?password");
+    ACCOUNT_CHANGE_PASSWORDS_NO_MATCH("/account?password"),
+    THANKS("/thanks");
 
 
     private final String url;
