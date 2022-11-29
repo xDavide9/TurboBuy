@@ -61,4 +61,12 @@ public class ExceptionHandlers {
         log.error("Redirecting to '{}'", redirect);
         return new RedirectView(redirect);
     }
+
+    @ExceptionHandler(TooManyFormSubmissionsException.class)
+    public RedirectView handleTooManyFormSubmissionsException(TooManyFormSubmissionsException e) {
+        log.error("TooManyFormSubmissionsException", e);
+        String redirect = SALES_TOO_MANY.getUrl();
+        log.error("Redirecting to '{}'", redirect);
+        return new RedirectView(redirect);
+    }
 }

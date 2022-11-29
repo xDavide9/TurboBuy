@@ -18,13 +18,18 @@
      id="new-sale" tabindex="-1">
     <div class="offcanvas-header pb-0">
         <h5 class="offcanvas-title" id="new-sale-label">New Sale</h5>
-        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" type="button"></button>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" id="offcanvas-button"
+                type="button"></button>
     </div>
     <div class="offcanvas-body">
         <form action="#" method="post" th:action="@{/sales}" th:object="${postedSale}">
             <div class="alert alert-danger" role="alert" th:if="${param.error}">
                 Title Already Exists
             </div>
+            <div class="alert alert-danger" role="alert" th:if="${param.too_many}">
+                Try Again Later
+            </div>
+
             <p>
                 <label class="sr-only mb-1" for="title">Title</label>
                 <input autofocus class="form-control" id="title" maxlength="30"

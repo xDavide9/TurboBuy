@@ -2,6 +2,7 @@ package com.xdavide9.turbobuy.sale;
 
 import com.xdavide9.turbobuy.exception.SaleAlreadyPresentException;
 import com.xdavide9.turbobuy.exception.SaleNotFoundException;
+import com.xdavide9.turbobuy.exception.TooManyFormSubmissionsException;
 import com.xdavide9.turbobuy.sale.api.Sale;
 import com.xdavide9.turbobuy.sale.api.SaleRepository;
 import com.xdavide9.turbobuy.user.account.auth.AppUserDetails;
@@ -50,7 +51,7 @@ public class SalesService {
         }
         return new RedirectView(HOME.getUrl());
     }
-    
+
     public List<Sale> getSales() {
         return saleRepository.findFifteenRandom().orElseThrow(
                 () -> new IllegalStateException("Something went wrong while fetching results"));
@@ -68,12 +69,17 @@ public class SalesService {
         AppUserDetails userDetails = (AppUserDetails) authentication.getPrincipal();
         AppUser user = userDetails.getAppUser();
         String username = user.getUsername();
+        boolean canPost = user.getCanPost();
+        if (!(canPost))
+            throw new TooManyFormSubmissionsException("User '" + username + "'" +
+                    " tried submitting the forms again in less than 24 hours");
         sale.setAppUserName(username);
         Set<Sale> sales = user.getSales();
         sales.add(sale);
         user.setSales(sales);
         saleRepository.save(sale);
         appUserRepository.save(user);
+        user.setCanPost(false);
         log.info("User '" + username + "' Successfully posted sale '" + sale + "'");
     }
 }

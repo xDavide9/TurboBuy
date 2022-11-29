@@ -1,7 +1,7 @@
 package com.xdavide9.turbobuy.user.api;
 
-import com.xdavide9.turbobuy.user.account.UsernameChange;
 import com.xdavide9.turbobuy.sale.api.Sale;
+import com.xdavide9.turbobuy.user.account.UsernameChange;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,6 +36,8 @@ public class AppUser {
     @Column(unique = true)
     private String username;
     private String password;
+    @Transient
+    private Boolean canPost = true;
     @Enumerated(EnumType.STRING)
     private AppUserRole role = USER;
     @ElementCollection(fetch = FetchType.EAGER)
